@@ -158,21 +158,14 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * List, Dictionary, Tuple, Set, FrozenSet
 * Comprehension expressions
 
-[M3] OOP
+[M3] Python Object Oriented 
 
 * Classes, attributes, methods
 * Getters, setters, properties, decorators
 * Inheritance (single, multiple)
 * Metaclasses, abstract classes, interfaces
 
-[M4] Files and Exceptions
-
-* Filesystem interface and paths
-* Reading and writing text and data files
-* Reading and writing from the network (REST, json, csv)
-* try-except blocks
-
-[M5] Scientific Python (Numpy)
+[M4] Scientific Python (Numpy)
 
 
 ## Exam
