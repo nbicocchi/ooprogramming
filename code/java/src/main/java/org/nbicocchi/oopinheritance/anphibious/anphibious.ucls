@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="org.nbicocchi.oopinheritance.anphibious.LandVehicle" project="ooprogramming" 
+    file="/ooprogramming/src/main/java/org/nbicocchi/oopinheritance/anphibious/LandVehicle.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="83" width="189" x="156" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="org.nbicocchi.oopinheritance.anphibious.Anphibious" project="ooprogramming" 
+    file="/ooprogramming/src/main/java/org/nbicocchi/oopinheritance/anphibious/Anphibious.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="119" width="189" x="270" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.nbicocchi.oopinheritance.anphibious.Car" project="ooprogramming" 
+    file="/ooprogramming/src/main/java/org/nbicocchi/oopinheritance/anphibious/Car.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="101" width="189" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="org.nbicocchi.oopinheritance.anphibious.WaterVehicle" project="ooprogramming" 
+    file="/ooprogramming/src/main/java/org/nbicocchi/oopinheritance/anphibious/WaterVehicle.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="83" width="189" x="385" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="org.nbicocchi.oopinheritance.anphibious.Boat" project="ooprogramming" 
+    file="/ooprogramming/src/main/java/org/nbicocchi/oopinheritance/anphibious/Boat.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="101" width="189" x="499" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="6">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="7">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="8">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="9">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
