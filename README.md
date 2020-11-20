@@ -155,7 +155,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 [M2] Data Structures
 
 * Iterable, Iterator, Generator
-* List, Dictionary, Tuple, Set, FrozenSet
+* List, Tuple, Set, FrozenSet, Dictionary
 * Comprehension expressions
 
 [M3] Python Object Oriented 
