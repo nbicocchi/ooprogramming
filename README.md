@@ -17,6 +17,7 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 
 ### Misc
 * [Git distributed version control system](https://git-scm.com/downloads)
+* http://www.pythontutor.com/
 * https://www.w3resource.com/
 * https://www.programiz.com/
 * https://exercism.io/
@@ -53,14 +54,14 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Modularization principles
 * Variables, Functions, and Classes
 
-[M2] Java Basics
+[M2] Basics
 
 * The Java environment
 * Primitive types
 * Strings and Arrays
 * Control statements
 
-[M3] Java Object Oriented 
+[M3] Object Oriented Programming
 
 * Classes and objects (Encapsulation)
 * Methods and attributes
@@ -158,7 +159,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * List, Tuple, Set, FrozenSet, Dictionary
 * Comprehension expressions
 
-[M3] Python Object Oriented 
+[M3] Object Oriented Programming
 
 * Classes, attributes, methods
 * Getters, setters, properties, decorators
