@@ -20,6 +20,8 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 * http://www.pythontutor.com/
 * https://www.w3resource.com/
 * https://www.programiz.com/
+* https://www.baeldung.com/
+* https://pynative.com/
 * https://exercism.io/
 * https://github.com/mtdvio/every-programmer-should-know
 * https://github.com/charlax/professional-programming
