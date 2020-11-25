@@ -1,0 +1,814 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{04 - Scientific Python}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{numpy}{%
+\section{Numpy}\label{numpy}}
+
+Numpy is the core library for scientific computing in Python. It
+provides a high-performance multidimensional array object, and tools for
+working with these arrays. If you are already familiar with MATLAB, you
+might find this tutorial useful to get started with Numpy.
+
+Table of ontent * Section \ref{arrays} * Section \ref{arrays-indexing} *
+Section \ref{datatypes} * Section \ref{array-math} *
+Section \ref{broadcasting} * Section \ref{numpy-documentation}
+
+    \hypertarget{arrays}{%
+\subsection{Arrays }\label{arrays}}
+
+A numpy array is a grid of values, all of the same type, and is indexed
+by a tuple of nonnegative integers. The number of dimensions is the rank
+of the array; the shape of an array is a tuple of integers giving the
+size of the array along each dimension.
+
+We can initialize numpy arrays from nested Python lists, and access
+elements using square brackets:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Create a rank 1 array}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}            \PY{c+c1}{\PYZsh{} Prints \PYZdq{}\PYZlt{}class \PYZsq{}numpy.ndarray\PYZsq{}\PYZgt{}\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{shape}\PY{p}{)}            \PY{c+c1}{\PYZsh{} Prints \PYZdq{}(3,)\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Prints \PYZdq{}1 2 3\PYZdq{}}
+        \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{5}                  \PY{c+c1}{\PYZsh{} Change an element of the array}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}                  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[5, 2, 3]\PYZdq{}}
+        
+        \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{]}\PY{p}{)}    \PY{c+c1}{\PYZsh{} Create a rank 2 array}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{o}{.}\PY{n}{shape}\PY{p}{)}                     \PY{c+c1}{\PYZsh{} Prints \PYZdq{}(2, 3)\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Prints \PYZdq{}1 2 4\PYZdq{}}
+\end{Verbatim}
+
+
+    Numpy also provides many functions to create arrays:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Create an array of all zeros}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}              \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 0.  0.]}
+                              \PY{c+c1}{\PYZsh{}          [ 0.  0.]]\PYZdq{}}
+        
+        \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}    \PY{c+c1}{\PYZsh{} Create an array of all ones}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{b}\PY{p}{)}              \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 1.  1.]]\PYZdq{}}
+        
+        \PY{n}{c} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{full}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Create a constant array}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{c}\PY{p}{)}               \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 7.  7.]}
+                               \PY{c+c1}{\PYZsh{}          [ 7.  7.]]\PYZdq{}}
+        
+        \PY{n}{d} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}         \PY{c+c1}{\PYZsh{} Create a 2x2 identity matrix}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{d}\PY{p}{)}              \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 1.  0.]}
+                              \PY{c+c1}{\PYZsh{}          [ 0.  1.]]\PYZdq{}}
+        
+        \PY{n}{e} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Create an array filled with random values}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{e}\PY{p}{)}                     \PY{c+c1}{\PYZsh{} Might print \PYZdq{}[[ 0.91940167  0.08143941]}
+                                     \PY{c+c1}{\PYZsh{}               [ 0.68744134  0.87236687]]\PYZdq{}}
+\end{Verbatim}
+
+
+    You can read about other methods of array creation in the
+\href{http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html}{documentation}.
+
+    \hypertarget{arrays-indexing}{%
+\subsection{Arrays indexing }\label{arrays-indexing}}
+
+Numpy offers several ways to index into arrays.
+
+Slicing: Similar to Python lists, numpy arrays can be sliced. Since
+arrays may be multidimensional, you must specify a slice for each
+dimension of the array:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} Create the following rank 2 array with shape (3, 4)}
+        \PY{c+c1}{\PYZsh{} [[ 1  2  3  4]}
+        \PY{c+c1}{\PYZsh{}  [ 5  6  7  8]}
+        \PY{c+c1}{\PYZsh{}  [ 9 10 11 12]]}
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Use slicing to pull out the subarray consisting of the first 2 rows}
+        \PY{c+c1}{\PYZsh{} and columns 1 and 2; b is the following array of shape (2, 2):}
+        \PY{c+c1}{\PYZsh{} [[2 3]}
+        \PY{c+c1}{\PYZsh{}  [6 7]]}
+        \PY{n}{b} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} A slice of an array is a view into the same data, so modifying it}
+        \PY{c+c1}{\PYZsh{} will modify the original array.}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Prints \PYZdq{}2\PYZdq{}}
+        \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{77}     \PY{c+c1}{\PYZsh{} b[0, 0] is the same piece of data as a[0, 1]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Prints \PYZdq{}77\PYZdq{}}
+\end{Verbatim}
+
+
+    You can also mix integer indexing with slice indexing. However, doing so
+will yield an array of lower rank than the original array. Note that
+this is quite different from the way that MATLAB handles array slicing:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} Create the following rank 2 array with shape (3, 4)}
+        \PY{c+c1}{\PYZsh{} [[ 1  2  3  4]}
+        \PY{c+c1}{\PYZsh{}  [ 5  6  7  8]}
+        \PY{c+c1}{\PYZsh{}  [ 9 10 11 12]]}
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Two ways of accessing the data in the middle row of the array.}
+        \PY{c+c1}{\PYZsh{} Mixing integer indexing with slices yields an array of lower rank,}
+        \PY{c+c1}{\PYZsh{} while using only slices yields an array of the same rank as the}
+        \PY{c+c1}{\PYZsh{} original array:}
+        \PY{n}{row\PYZus{}r1} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{p}{:}\PY{p}{]}    \PY{c+c1}{\PYZsh{} Rank 1 view of the second row of a}
+        \PY{n}{row\PYZus{}r2} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{,} \PY{p}{:}\PY{p}{]}  \PY{c+c1}{\PYZsh{} Rank 2 view of the second row of a}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{row\PYZus{}r1}\PY{p}{,} \PY{n}{row\PYZus{}r1}\PY{o}{.}\PY{n}{shape}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[5 6 7 8] (4,)\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{row\PYZus{}r2}\PY{p}{,} \PY{n}{row\PYZus{}r2}\PY{o}{.}\PY{n}{shape}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[5 6 7 8]] (1, 4)\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} We can make the same distinction when accessing columns of an array:}
+        \PY{n}{col\PYZus{}r1} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}
+        \PY{n}{col\PYZus{}r2} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{col\PYZus{}r1}\PY{p}{,} \PY{n}{col\PYZus{}r1}\PY{o}{.}\PY{n}{shape}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[ 2  6 10] (3,)\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{col\PYZus{}r2}\PY{p}{,} \PY{n}{col\PYZus{}r2}\PY{o}{.}\PY{n}{shape}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 2]}
+                                     \PY{c+c1}{\PYZsh{}          [ 6]}
+                                     \PY{c+c1}{\PYZsh{}          [10]] (3, 1)\PYZdq{}}
+\end{Verbatim}
+
+
+    Integer array indexing: When you index into numpy arrays using slicing,
+the resulting array view will always be a subarray of the original
+array. In contrast, integer array indexing allows you to construct
+arbitrary arrays using the data from another array. Here is an example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} An example of integer array indexing.}
+        \PY{c+c1}{\PYZsh{} The returned array will have shape (3,) and}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[1 4 5]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} The above example of integer array indexing is equivalent to this:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[1 4 5]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} When using integer array indexing, you can reuse the same}
+        \PY{c+c1}{\PYZsh{} element from the source array:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[2 2]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} Equivalent to the previous integer array indexing example}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[2 2]\PYZdq{}}
+\end{Verbatim}
+
+
+    One useful trick with integer array indexing is selecting or mutating
+one element from each row of a matrix:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} Create a new array from which we will select elements}
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}  \PY{c+c1}{\PYZsh{} prints \PYZdq{}array([[ 1,  2,  3],}
+                  \PY{c+c1}{\PYZsh{}                [ 4,  5,  6],}
+                  \PY{c+c1}{\PYZsh{}                [ 7,  8,  9],}
+                  \PY{c+c1}{\PYZsh{}                [10, 11, 12]])\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} Create an array of indices}
+        \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Select one element from each row of a using the indices in b}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n}{b}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[ 1  6  7 11]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} Mutate one element from each row of a using the indices in b}
+        \PY{n}{a}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n}{b}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{10}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}  \PY{c+c1}{\PYZsh{} prints \PYZdq{}array([[11,  2,  3],}
+                  \PY{c+c1}{\PYZsh{}                [ 4,  5, 16],}
+                  \PY{c+c1}{\PYZsh{}                [17,  8,  9],}
+                  \PY{c+c1}{\PYZsh{}                [10, 21, 12]])}
+\end{Verbatim}
+
+
+    Boolean array indexing: Boolean array indexing lets you pick out
+arbitrary elements of an array. Frequently this type of indexing is used
+to select the elements of an array that satisfy some condition. Here is
+an example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{bool\PYZus{}idx} \PY{o}{=} \PY{p}{(}\PY{n}{a} \PY{o}{\PYZgt{}} \PY{l+m+mi}{2}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Find the elements of a that are bigger than 2;}
+                             \PY{c+c1}{\PYZsh{} this returns a numpy array of Booleans of the same}
+                             \PY{c+c1}{\PYZsh{} shape as a, where each slot of bool\PYZus{}idx tells}
+                             \PY{c+c1}{\PYZsh{} whether that element of a is \PYZgt{} 2.}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{bool\PYZus{}idx}\PY{p}{)}      \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[False False]}
+                             \PY{c+c1}{\PYZsh{}          [ True  True]}
+                             \PY{c+c1}{\PYZsh{}          [ True  True]]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} We use boolean array indexing to construct a rank 1 array}
+        \PY{c+c1}{\PYZsh{} consisting of the elements of a corresponding to the True values}
+        \PY{c+c1}{\PYZsh{} of bool\PYZus{}idx}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{n}{bool\PYZus{}idx}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[3 4 5 6]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} We can do all of the above in a single concise statement:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{n}{a} \PY{o}{\PYZgt{}} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}     \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[3 4 5 6]\PYZdq{}}
+\end{Verbatim}
+
+
+    For brevity we have left out a lot of details about numpy array
+indexing; if you want to know more you should read the
+\href{http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html}{documentation}.
+
+    \hypertarget{datatypes}{%
+\subsection{Datatypes }\label{datatypes}}
+
+Every numpy array is a grid of elements of the same type. Numpy provides
+a large set of numeric datatypes that you can use to construct arrays.
+Numpy tries to guess a datatype when you create an array, but functions
+that construct arrays usually also include an optional argument to
+explicitly specify the datatype. Here is an example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Let numpy choose the datatype}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{dtype}\PY{p}{)}         \PY{c+c1}{\PYZsh{} Prints \PYZdq{}int64\PYZdq{}}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{]}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Let numpy choose the datatype}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{dtype}\PY{p}{)}             \PY{c+c1}{\PYZsh{} Prints \PYZdq{}float64\PYZdq{}}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int64}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Force a particular datatype}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{dtype}\PY{p}{)}                         \PY{c+c1}{\PYZsh{} Prints \PYZdq{}int64\PYZdq{}}
+\end{Verbatim}
+
+
+    You can read all about numpy datatypes in the
+\href{http://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html}{documentation}.
+
+    \hypertarget{array-math}{%
+\subsection{Array math }\label{array-math}}
+
+Basic mathematical functions operate elementwise on arrays, and are
+available both as operator overloads and as functions in the numpy
+module:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Elementwise sum; both produce the array}
+        \PY{c+c1}{\PYZsh{} [[ 6.0  8.0]}
+        \PY{c+c1}{\PYZsh{}  [10.0 12.0]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{+} \PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{add}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Elementwise difference; both produce the array}
+        \PY{c+c1}{\PYZsh{} [[\PYZhy{}4.0 \PYZhy{}4.0]}
+        \PY{c+c1}{\PYZsh{}  [\PYZhy{}4.0 \PYZhy{}4.0]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{subtract}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Elementwise product; both produce the array}
+        \PY{c+c1}{\PYZsh{} [[ 5.0 12.0]}
+        \PY{c+c1}{\PYZsh{}  [21.0 32.0]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{*} \PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{multiply}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Elementwise division; both produce the array}
+        \PY{c+c1}{\PYZsh{} [[ 0.2         0.33333333]}
+        \PY{c+c1}{\PYZsh{}  [ 0.42857143  0.5       ]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{/} \PY{n}{y}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{divide}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Elementwise square root; produces the array}
+        \PY{c+c1}{\PYZsh{} [[ 1.          1.41421356]}
+        \PY{c+c1}{\PYZsh{}  [ 1.73205081  2.        ]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Note that unlike MATLAB, * is elementwise multiplication, not matrix
+multiplication. We instead use the dot function to compute inner
+products of vectors, to multiply a vector by a matrix, and to multiply
+matrices. dot is available both as a function in the numpy module and as
+an instance method of array objects:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{)}
+        \PY{n}{w} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Inner product of vectors; both produce 219}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{v}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{w}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n}{w}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Matrix / vector product; both produce the rank 1 array [29 67]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{v}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Matrix / matrix product; both produce the rank 2 array}
+        \PY{c+c1}{\PYZsh{} [[19 22]}
+        \PY{c+c1}{\PYZsh{}  [43 50]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    Numpy provides many useful functions for performing computations on
+arrays; one of the most useful is sum:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Compute sum of all elements; prints \PYZdq{}10\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Compute sum of each column; prints \PYZdq{}[4 6]\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Compute sum of each row; prints \PYZdq{}[3 7]\PYZdq{}}
+\end{Verbatim}
+
+
+    You can find the full list of mathematical functions provided by numpy
+in the
+\href{http://docs.scipy.org/doc/numpy/reference/routines.math.html}{documentation}.
+
+Apart from computing mathematical functions using arrays, we frequently
+need to reshape or otherwise manipulate data in arrays. The simplest
+example of this type of operation is transposing a matrix; to transpose
+a matrix, simply use the T attribute of an array object:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}    \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[1 2]}
+                    \PY{c+c1}{\PYZsh{}          [3 4]]\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{T}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[1 3]}
+                    \PY{c+c1}{\PYZsh{}          [2 4]]\PYZdq{}}
+        
+        \PY{c+c1}{\PYZsh{} Note that taking the transpose of a rank 1 array does nothing:}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{v}\PY{p}{)}    \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[1 2 3]\PYZdq{}}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{v}\PY{o}{.}\PY{n}{T}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[1 2 3]\PYZdq{}}
+\end{Verbatim}
+
+
+    Numpy provides many more functions for manipulating arrays; you can see
+the full list in the
+\href{http://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html}{documentation}.
+
+    \hypertarget{broadcasting}{%
+\subsection{Broadcasting }\label{broadcasting}}
+
+Broadcasting is a powerful mechanism that allows numpy to work with
+arrays of different shapes when performing arithmetic operations.
+Frequently we have a smaller array and a larger array, and we want to
+use the smaller array multiple times to perform some operation on the
+larger array.
+
+For example, suppose that we want to add a constant vector to each row
+of a matrix. We could do it like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} We will add the vector v to each row of the matrix x,}
+        \PY{c+c1}{\PYZsh{} storing the result in the matrix y}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Create an empty matrix with the same shape as x}
+        
+        \PY{c+c1}{\PYZsh{} Add the vector v to each row of the matrix x with an explicit loop}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+            \PY{n}{y}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{p}{:}\PY{p}{]} \PY{o}{=} \PY{n}{x}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{p}{:}\PY{p}{]} \PY{o}{+} \PY{n}{v}
+        
+        \PY{c+c1}{\PYZsh{} Now y is the following}
+        \PY{c+c1}{\PYZsh{} [[ 2  2  4]}
+        \PY{c+c1}{\PYZsh{}  [ 5  5  7]}
+        \PY{c+c1}{\PYZsh{}  [ 8  8 10]}
+        \PY{c+c1}{\PYZsh{}  [11 11 13]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+
+    This works; however when the matrix x is very large, computing an
+explicit loop in Python could be slow. Note that adding the vector v to
+each row of the matrix x is equivalent to forming a matrix vv by
+stacking multiple copies of v vertically, then performing elementwise
+summation of x and vv. We could implement this approach like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} We will add the vector v to each row of the matrix x,}
+        \PY{c+c1}{\PYZsh{} storing the result in the matrix y}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{vv} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{tile}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}   \PY{c+c1}{\PYZsh{} Stack 4 copies of v on top of each other}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{vv}\PY{p}{)}                 \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[1 0 1]}
+                                  \PY{c+c1}{\PYZsh{}          [1 0 1]}
+                                  \PY{c+c1}{\PYZsh{}          [1 0 1]}
+                                  \PY{c+c1}{\PYZsh{}          [1 0 1]]\PYZdq{}}
+        \PY{n}{y} \PY{o}{=} \PY{n}{x} \PY{o}{+} \PY{n}{vv}  \PY{c+c1}{\PYZsh{} Add x and vv elementwise}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 2  2  4}
+                  \PY{c+c1}{\PYZsh{}          [ 5  5  7]}
+                  \PY{c+c1}{\PYZsh{}          [ 8  8 10]}
+                  \PY{c+c1}{\PYZsh{}          [11 11 13]]\PYZdq{}}
+\end{Verbatim}
+
+
+    Numpy broadcasting allows us to perform this computation without
+actually creating multiple copies of v. Consider this version, using
+broadcasting:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} We will add the vector v to each row of the matrix x,}
+        \PY{c+c1}{\PYZsh{} storing the result in the matrix y}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{12}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{x} \PY{o}{+} \PY{n}{v}  \PY{c+c1}{\PYZsh{} Add v to each row of x using broadcasting}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Prints \PYZdq{}[[ 2  2  4]}
+                  \PY{c+c1}{\PYZsh{}          [ 5  5  7]}
+                  \PY{c+c1}{\PYZsh{}          [ 8  8 10]}
+                  \PY{c+c1}{\PYZsh{}          [11 11 13]]\PYZdq{}}
+\end{Verbatim}
+
+
+    The line y = x + v works even though x has shape (4, 3) and v has shape
+(3,) due to broadcasting; this line works as if v actually had shape (4,
+3), where each row was a copy of v, and the sum was performed
+elementwise.
+
+Broadcasting two arrays together follows these rules:
+
+If the arrays do not have the same rank, prepend the shape of the lower
+rank array with 1s until both shapes have the same length. The two
+arrays are said to be compatible in a dimension if they have the same
+size in the dimension, or if one of the arrays has size 1 in that
+dimension. The arrays can be broadcast together if they are compatible
+in all dimensions. After broadcasting, each array behaves as if it had
+shape equal to the elementwise maximum of shapes of the two input
+arrays. In any dimension where one array had size 1 and the other array
+had size greater than 1, the first array behaves as if it were copied
+along that dimension If this explanation does not make sense, try
+reading the explanation from the
+\href{http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html}{documentation}.
+
+Functions that support broadcasting are known as universal functions.
+You can find the list of all universal functions in the
+\href{http://docs.scipy.org/doc/numpy/reference/ufuncs.html\#available-ufuncs}{documentation}.
+
+Here are some applications of broadcasting:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{c+c1}{\PYZsh{} Compute outer product of vectors}
+        \PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}  \PY{c+c1}{\PYZsh{} v has shape (3,)}
+        \PY{n}{w} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}    \PY{c+c1}{\PYZsh{} w has shape (2,)}
+        \PY{c+c1}{\PYZsh{} To compute an outer product, we first reshape v to be a column}
+        \PY{c+c1}{\PYZsh{} vector of shape (3, 1); we can then broadcast it against w to yield}
+        \PY{c+c1}{\PYZsh{} an output of shape (3, 2), which is the outer product of v and w:}
+        \PY{c+c1}{\PYZsh{} [[ 4  5]}
+        \PY{c+c1}{\PYZsh{}  [ 8 10]}
+        \PY{c+c1}{\PYZsh{}  [12 15]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{w}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Add a vector to each row of a matrix}
+        \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),}
+        \PY{c+c1}{\PYZsh{} giving the following matrix:}
+        \PY{c+c1}{\PYZsh{} [[2 4 6]}
+        \PY{c+c1}{\PYZsh{}  [5 7 9]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{+} \PY{n}{v}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Add a vector to each column of a matrix}
+        \PY{c+c1}{\PYZsh{} x has shape (2, 3) and w has shape (2,).}
+        \PY{c+c1}{\PYZsh{} If we transpose x then it has shape (3, 2) and can be broadcast}
+        \PY{c+c1}{\PYZsh{} against w to yield a result of shape (3, 2); transposing this result}
+        \PY{c+c1}{\PYZsh{} yields the final result of shape (2, 3) which is the matrix x with}
+        \PY{c+c1}{\PYZsh{} the vector w added to each column. Gives the following matrix:}
+        \PY{c+c1}{\PYZsh{} [[ 5  6  7]}
+        \PY{c+c1}{\PYZsh{}  [ 9 10 11]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{T} \PY{o}{+} \PY{n}{w}\PY{p}{)}\PY{o}{.}\PY{n}{T}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} Another solution is to reshape w to be a column vector of shape (2, 1);}
+        \PY{c+c1}{\PYZsh{} we can then broadcast it directly against x to produce the same}
+        \PY{c+c1}{\PYZsh{} output.}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{n}{w}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Multiply a matrix by a constant:}
+        \PY{c+c1}{\PYZsh{} x has shape (2, 3). Numpy treats scalars as arrays of shape ();}
+        \PY{c+c1}{\PYZsh{} these can be broadcast together to shape (2, 3), producing the}
+        \PY{c+c1}{\PYZsh{} following array:}
+        \PY{c+c1}{\PYZsh{} [[ 2  4  6]}
+        \PY{c+c1}{\PYZsh{}  [ 8 10 12]]}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{x} \PY{o}{*} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    Broadcasting typically makes your code more concise and faster, so you
+should strive to use it where possible.
+
+    \hypertarget{numpy-documentation}{%
+\subsection{Numpy Documentation }\label{numpy-documentation}}
+
+This brief overview has touched on many of the important things that you
+need to know about numpy, but is far from complete. Check out the numpy
+reference to find out much more about numpy.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
