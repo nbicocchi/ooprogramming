@@ -14,6 +14,7 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 * [Python Development Kit](https://www.python.org/downloads/)
 * [Python Official Documentation](https://www.python.org/doc/)
 * [PyCharm](https://www.jetbrains.com/pycharm/)
+* [JupyterLab](https://jupyter.org/)
 
 ### Misc
 * [Git distributed version control system](https://git-scm.com/downloads)
