@@ -11,10 +11,7 @@ class Car:
         self.speed -= 1
         
     def __repr__(self):
-        return 'Brand={}, Model={}, Speed={}'.format(
-            self.brand, 
-            self.model, 
-            self.speed)
+        return str(self.__dict__)
     
 class ECar(Car):
     def __init__(self, brand, model, speed=0, battery_level=0):
@@ -34,13 +31,4 @@ class ECar(Car):
         
     def discharge(self):
         self.battery_level += 1
-        
-    def __repr__(self):
-        return 'Brand={}, Model={}, Speed={}, Battery={}'.format(
-            self.brand, 
-            self.model, 
-            self.speed,
-            self.battery_level)
-    
-    
     
