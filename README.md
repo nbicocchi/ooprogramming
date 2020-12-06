@@ -166,7 +166,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 * Classes, attributes, methods
 * Getters, setters, properties, decorators
-* Encapsulation, Inheritance, Polymorphism 
+* Encapsulation, inheritance, polymorphism 
 * Informal interfaces
 
 [M4] Scientific Python (Numpy)
