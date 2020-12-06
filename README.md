@@ -159,15 +159,15 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 [M2] Data Structures
 
 * Iterable, Iterator, Generator
-* List, Tuple, Set, FrozenSet, Dictionary
+* List, Tuple, Set, Dictionary
 * Comprehension expressions
 
 [M3] Object Oriented Programming
 
 * Classes, attributes, methods
 * Getters, setters, properties, decorators
-* Inheritance (single, multiple)
-* Metaclasses, abstract classes, interfaces
+* Encapsulation, Inheritance, Polymorphism 
+* Informal interfaces
 
 [M4] Scientific Python (Numpy)
 
