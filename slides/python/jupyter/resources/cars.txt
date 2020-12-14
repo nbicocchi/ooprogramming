@@ -1,1 +1,3 @@
 BMW, M3, 120
+Toyota, Supra, 130
+Nissan, GTR, 140
