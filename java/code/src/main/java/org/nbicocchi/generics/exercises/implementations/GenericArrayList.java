@@ -1,0 +1,68 @@
+package org.nbicocchi.generics.exercises.implementations;
+
+/**
+ * Simplified implementation of a generic ArrayList
+ *
+ * @author Nicola Bicocchi
+ */
+public class GenericArrayList<T> extends GenericAbstractList<T> {
+    private static final int DEFAULT_CAPACITY = 16;
+    private int size = 0;
+    private Object[] elements;
+
+    public GenericArrayList() {
+        elements = new Object[DEFAULT_CAPACITY];
+    }
+
+    @Override
+    public void add(T data) {
+        // we re-allocate before complete fullness
+        if (size >= elements.length - 1) {
+            // buffer re-allocation
+            Object[] tmp = new Object[elements.length * 2];
+            for (int i = 0; i < elements.length; i++) {
+                tmp[i] = elements[i];
+            }
+            elements = tmp;
+        }
+        elements[size] = data;
+        size++;
+    }
+
+    @Override
+    public void add(T data, int index) {
+        add(data);
+        /* move array elements into memory */
+        for (int i = elements.length - 1; i > index; i--) {
+            elements[i] = elements[i - 1];
+        }
+        elements[index] = data;
+        elements[size] = null;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public T get(int index) {
+        if (index < 0 || index >= size())
+            return null;
+        return (T) elements[index];
+    }
+
+    @Override
+    public boolean remove(int index) {
+        if (index < 0 || index >= size())
+            return false;
+        /* move array elements into memory */
+        for (int i = index; i < size; i++) {
+            elements[i] = elements[i + 1];
+        }
+        size--;
+        elements[size] = null;
+        return true;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+}

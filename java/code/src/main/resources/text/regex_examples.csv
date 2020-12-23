@@ -1,0 +1,55 @@
+# The . (dot) represents a single character.
+".s", "as"
+".s", "mk"
+".s", "mst"
+".s", "amms"
+".s", "mas"
+
+# Character classes
+"[amn]", "abcd"
+"[amn]", "a"
+"[amn]", "ammmna"
+"[^abc]", "f"
+"[^abc]", "af"
+"[^abc]", "df"
+"[a-z&&[def]]", "g"
+"[a-z&&[def]]", "gz"
+"[a-z&&[def]]", "e"
+"[a-z&&[^def]]", "g"
+"[a-z&&[^def]]", "gz"
+"[a-z&&[^def]]", "e"
+
+# ? quantifier
+"[amn]?", "a"
+"[amn]?", "m"
+"[amn]?", ""
+"[amn]?", "aazzta"
+"[amn]?", "a7"
+  
+# + quantifier
+"[amn]+", "a"
+"[amn]+", "aaa"
+"[amn]+", "aammmnn"
+"[amn]+", "aammm"
+"[amn]+", "aammmdd"
+  
+# * quantifier
+"[amn]*", "a"
+"[amn]*", "aaa"
+"[amn]*", "aammmnn"
+"[amn]*", "aammm"
+"[amn]*", "aammmdd"
+
+# metacharacter d
+"\d", "abc"
+"\d", "1"
+"\d+", "4443"
+"\d+", "323abc"
+"\d+", "32"
+  
+# metacharacter S
+"\S", "abc"
+"\S", "1"
+"\S", "4443"
+"\S+", "323abc"
+"\S+", "32"
