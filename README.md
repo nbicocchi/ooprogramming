@@ -173,11 +173,11 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 
 ## Exam
-The final exam is a discussion about both the home project and theoretical aspects concerning Java and OOP techniques. It is worth noticing that the project is not supposed to be developed alone without supervision, but mostly during the course. The whole development process and related discussions with Prof. Bicocchi will be evaluated. Students are expected:
+During the final exam students are expected:
 
-* to pass an oral examination about OOP techniques and the Java language (short written exercises might be used, see topics above)
+* to discuss about the structure, the internals and engineering choices of their home project (could be developed in Java, Python, or C# which is very similar to Java). It is worth noticing that the project is not supposed to be developed alone without supervision, but mostly during the course. The whole development process and related discussions with Prof. Bicocchi will be evaluated.
 
-* to successfully discuss about the structure, the internals and engineering choices of their home project
+* to pass an oral examination about the Java and Python languages (short written exercises might be used, see topics above)
 
 ## FAQ
 Can we develop the project in groups of 1 or 3 people?
