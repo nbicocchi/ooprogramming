@@ -169,7 +169,18 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Encapsulation, inheritance, polymorphism 
 * Informal interfaces
 
-[M4] Scientific Python (Numpy)
+[M4] Project Management
+
+* Standard library
+* Modules and packages
+* Code testing
+* Best Practices
+
+[M5] Scientific Python
+* Numpy array (ndarray) initialization and data types
+* Indexing and slicing
+* Mathematical computations on arrays
+* Reshaping
 
 
 ## Exam
