@@ -6,15 +6,15 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 ## Software, Tutorials, Exercises
 
 ### Java
-* [Java Development Kit](https://www.oracle.com/java/technologies/javase-jdk13-downloads.html)
-* [Java Official Documentation](https://docs.oracle.com/javase/tutorial/)
+* [Java SE Development Kit](https://www.oracle.com/java/technologies/javase-downloads.html)
+* [Java SE Documentation](https://docs.oracle.com/javase/tutorial/)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 ### Python
 * [Python Development Kit](https://www.python.org/downloads/)
-* [Python Official Documentation](https://www.python.org/doc/)
+* [Python Documentation](https://www.python.org/doc/)
 * [PyCharm](https://www.jetbrains.com/pycharm/)
-* [JupyterLab](https://jupyter.org/)
+* [Anaconda](https://www.anaconda.com/products/individual)
 
 ### Misc
 * [Git distributed version control system](https://git-scm.com/downloads)
