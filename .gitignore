@@ -13,6 +13,7 @@ java/code/.idea/
 java/code/.gradle/
 java/code/gradle/
 java/code/build/
+java/code/gradlew*
 
 # Packages #
 ############
