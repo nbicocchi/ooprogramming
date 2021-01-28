@@ -14,6 +14,7 @@ java/code/.gradle/
 java/code/gradle/
 java/code/build/
 java/code/gradlew*
+localmods/
 
 # Packages #
 ############
