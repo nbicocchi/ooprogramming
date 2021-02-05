@@ -4,7 +4,7 @@ package org.nbicocchi.oop;
  * Nel contesto di un programma di simulazione per la cinematica, si implementi
  * una classe Body che rappresenta un corpo puntiforme dotato di posizione nel
  * piano cartesiano e di velocità.
- * <p>
+ *
  * Il costruttore della classe prende come argomento le coordinate alle quali si
  * trova inizialmente il corpo; il corpo si suppone inizialmente in quiete. Il
  * metodo setSpeed(v_x, v_y) prende il valore della velocità lungo i due assi
@@ -13,75 +13,141 @@ package org.nbicocchi.oop;
  * un dato numero di secondi, andando ad aggiornare la posizione del corpo. Il
  * metodo toString va ridefinito in modo da mostrare la posizione corrente del
  * corpo.
- * <p>
+ *
  * Fornire infine la classe di metodo main dimostrativo.
  *
  * @author Nicola Bicocchi
  */
 public class Body {
-    double x, y, v_x, v_y;
+    /**
+     * x coordinate of body's location
+     */
+    double x;
 
+    /**
+     * y coordinate of body's location
+     */
+    double y;
+
+    /**
+     * x component of body's velocity
+     */
+    double vX;
+
+    /**
+     * y component of body's velocity
+     */
+    double vY;
+
+    /**
+     * Constructs a body at the origin of coordinates with velocity zero
+     */
     public Body() {
         this.x = 0;
         this.y = 0;
-        this.v_x = 0;
-        this.v_y = 0;
+        this.vX = 0;
+        this.vY = 0;
     }
 
+    /**
+     * Constructs a body at the specified coordinates with velocity zero
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
     public Body(double x, double y) {
         this.x = x;
         this.y = y;
-        this.v_x = 0;
-        this.v_y = 0;
+        this.vX = 0;
+        this.vY = 0;
     }
 
-    public Body(double x, double y, double v_x, double v_y) {
+    /**
+     * Constructs a body at the specified coordinates and velocity
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @param vX the x speed
+     * @param vY the y speed
+     */
+    public Body(double x, double y, double vX, double vY) {
         this.x = x;
         this.y = y;
-        this.v_x = v_x;
-        this.v_y = v_y;
+        this.vX = vX;
+        this.vY = vY;
     }
 
+    /**
+     * @return x coordinate
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     * @param x set the x coordinate
+     */
     public void setX(double x) {
         this.x = x;
     }
 
+    /**
+     * @return return the y coordinate
+     */
     public double getY() {
         return y;
     }
 
+    /**
+     * @param y set the y coordinate
+     */
     public void setY(double y) {
         this.y = y;
     }
 
-    public double getV_x() {
-        return v_x;
+    /**
+     * @return the x component of velocity
+     */
+    public double getvX() {
+        return vX;
     }
 
-    public void setV_x(double v_x) {
-        this.v_x = v_x;
+    /**
+     * @param vX set the x component of velocity
+     */
+    public void setvX(double vX) {
+        this.vX = vX;
     }
 
-    public double getV_y() {
-        return v_y;
+    /**
+     * @return the y component of velocity
+     */
+    public double getvY() {
+        return vY;
     }
 
-    public void setV_y(double v_y) {
-        this.v_y = v_y;
+    /**
+     * @param vY the y component of velocity
+     */
+    public void setvY(double vY) {
+        this.vY = vY;
     }
 
-    public void setSpeed(double v_x, double v_y) {
-        this.v_x = v_x;
-        this.v_y = v_y;
+    /**
+     * Set the x and y components of velocity
+     * @param vX the x component of velocity
+     * @param vY the y component of velocity
+     */
+    public void setSpeed(double vX, double vY) {
+        this.vX = vX;
+        this.vY = vY;
     }
 
+    /**
+     * Move the body in x and y assuming vX and vY acticing for the specified time
+     * @param t the duration of movement (in seconds)
+     */
     public void progress(double t) {
-        x += v_x * t;
-        y += v_y * t;
+        x += vX * t;
+        y += vY * t;
     }
 
     @Override
@@ -89,8 +155,8 @@ public class Body {
         return "Body{" +
                 "x=" + x +
                 ", y=" + y +
-                ", v_x=" + v_x +
-                ", v_y=" + v_y +
+                ", v_x=" + vX +
+                ", v_y=" + vY +
                 '}';
     }
 
