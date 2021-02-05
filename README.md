@@ -7,8 +7,9 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 
 ### Java
 * [Java SE Development Kit](https://www.oracle.com/java/technologies/javase-downloads.html)
-* [Java SE Documentation](https://docs.oracle.com/javase/tutorial/)
+* Java SE [Tutorials](https://docs.oracle.com/javase/tutorial/) and [API](https://docs.oracle.com/en/java/javase/15/docs/api/index.html)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+* [IntelliJ IDEA Resources](https://www.jetbrains.com/idea/resources/)
 
 ### Python
 * [Python Development Kit](https://www.python.org/downloads/)
