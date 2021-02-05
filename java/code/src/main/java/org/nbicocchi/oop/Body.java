@@ -76,6 +76,7 @@ public class Body {
     }
 
     /**
+     * Get the x coordinate of body
      * @return x coordinate
      */
     public double getX() {
@@ -83,6 +84,7 @@ public class Body {
     }
 
     /**
+     * Set the x coordinate of body
      * @param x set the x coordinate
      */
     public void setX(double x) {
@@ -90,6 +92,7 @@ public class Body {
     }
 
     /**
+     * Get the y coordinate of body
      * @return return the y coordinate
      */
     public double getY() {
@@ -97,6 +100,7 @@ public class Body {
     }
 
     /**
+     * Set the y coordinate of body
      * @param y set the y coordinate
      */
     public void setY(double y) {
@@ -104,6 +108,7 @@ public class Body {
     }
 
     /**
+     * Get the x component of velocity
      * @return the x component of velocity
      */
     public double getvX() {
@@ -111,6 +116,7 @@ public class Body {
     }
 
     /**
+     * Set the x component of velocity
      * @param vX set the x component of velocity
      */
     public void setvX(double vX) {
@@ -118,6 +124,7 @@ public class Body {
     }
 
     /**
+     * Get the y component of velocity
      * @return the y component of velocity
      */
     public double getvY() {
@@ -125,6 +132,7 @@ public class Body {
     }
 
     /**
+     * Set the y component of velocity
      * @param vY the y component of velocity
      */
     public void setvY(double vY) {
