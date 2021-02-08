@@ -38,7 +38,7 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 
 
 ## Videos
-* [YouTube OOP](https://www.youtube.com/watch?v=JxspJSfVvSA&list=PLhlcRDRHVUzTruZmXalUSJAK26pouP8ST)
+* [YouTube OOP](https://www.youtube.com/watch?v=y3H3xwI0prM&list=PLhlcRDRHVUzTruZmXalUSJAK26pouP8ST)
 * [YouTube IntelliJ](https://www.youtube.com/c/intellijidea/videos)
 * [YouTube PyCharm](https://www.youtube.com/c/PyCharmIDE/videos)
 

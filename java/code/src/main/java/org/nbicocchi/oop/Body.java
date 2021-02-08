@@ -1,22 +1,24 @@
 package org.nbicocchi.oop;
 
 /**
- * Nel contesto di un programma di simulazione per la cinematica, si implementi
- * una classe Body che rappresenta un corpo puntiforme dotato di posizione nel
- * piano cartesiano e di velocità.
- *
- * Il costruttore della classe prende come argomento le coordinate alle quali si
- * trova inizialmente il corpo; il corpo si suppone inizialmente in quiete. Il
- * metodo setSpeed(v_x, v_y) prende il valore della velocità lungo i due assi
- * di riferimento. Si supponga che la posizione sia espressa in metri e la
- * velocità in metri al secondo. Il metodo progress(t) simula il passaggio di
- * un dato numero di secondi, andando ad aggiornare la posizione del corpo. Il
- * metodo toString va ridefinito in modo da mostrare la posizione corrente del
- * corpo.
- *
- * Fornire infine la classe di metodo main dimostrativo.
+ * Implement a Body class representing a two-dimensional point (x, y) capable of
+ * moving with a certain speed (vx, vy).
+ * <p>
+ * The class have to implement three constructors:
+ * Body() - Setting x = y = vy = vy = 0
+ * Body(x, y) Setting x, y as parameters and vx = vy = 0
+ * Body(x, y, vx, vy) Setting x, y, vx, vy
+ * <p>
+ * The class have also to implement the following methods:
+ * getters and setters for x, y, vx, vy
+ * progress(t) updating coordinates x, y by considering a steady movement at velocity vx, vy
+ * toString() printing x, y, vx, vy
+ * <p>
+ * Also, a demonstrative main() function have to be implemented.
  *
  * @author Nicola Bicocchi
+ * <p>
+ * https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html
  */
 public class Body {
     /**
@@ -51,6 +53,7 @@ public class Body {
 
     /**
      * Constructs a body at the specified coordinates with velocity zero
+     *
      * @param x the x coordinate
      * @param y the y coordinate
      */
@@ -63,8 +66,9 @@ public class Body {
 
     /**
      * Constructs a body at the specified coordinates and velocity
-     * @param x the x coordinate
-     * @param y the y coordinate
+     *
+     * @param x  the x coordinate
+     * @param y  the y coordinate
      * @param vX the x speed
      * @param vY the y speed
      */
@@ -77,6 +81,7 @@ public class Body {
 
     /**
      * Get the x coordinate of body
+     *
      * @return x coordinate
      */
     public double getX() {
@@ -85,6 +90,7 @@ public class Body {
 
     /**
      * Set the x coordinate of body
+     *
      * @param x set the x coordinate
      */
     public void setX(double x) {
@@ -93,6 +99,7 @@ public class Body {
 
     /**
      * Get the y coordinate of body
+     *
      * @return return the y coordinate
      */
     public double getY() {
@@ -101,6 +108,7 @@ public class Body {
 
     /**
      * Set the y coordinate of body
+     *
      * @param y set the y coordinate
      */
     public void setY(double y) {
@@ -109,38 +117,43 @@ public class Body {
 
     /**
      * Get the x component of velocity
+     *
      * @return the x component of velocity
      */
-    public double getvX() {
+    public double getVX() {
         return vX;
     }
 
     /**
      * Set the x component of velocity
+     *
      * @param vX set the x component of velocity
      */
-    public void setvX(double vX) {
+    public void setVX(double vX) {
         this.vX = vX;
     }
 
     /**
      * Get the y component of velocity
+     *
      * @return the y component of velocity
      */
-    public double getvY() {
+    public double getVY() {
         return vY;
     }
 
     /**
      * Set the y component of velocity
+     *
      * @param vY the y component of velocity
      */
-    public void setvY(double vY) {
+    public void setVY(double vY) {
         this.vY = vY;
     }
 
     /**
      * Set the x and y components of velocity
+     *
      * @param vX the x component of velocity
      * @param vY the y component of velocity
      */
@@ -150,7 +163,9 @@ public class Body {
     }
 
     /**
-     * Move the body in x and y assuming vX and vY acticing for the specified time
+     * Move the body in x and y assuming vX and vY acting for the specified
+     * time
+     *
      * @param t the duration of movement (in seconds)
      */
     public void progress(double t) {

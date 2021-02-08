@@ -32,7 +32,7 @@ public class BodyTest {
     public void setSpeed() {
         Body b = new Body(0, 0 , 5, 5);
         b.setSpeed(7,7);
-        assertEquals(7.0, b.getvX(), 0.0);
+        assertEquals(7.0, b.getVX(), 0.0);
     }
 
     @Test
