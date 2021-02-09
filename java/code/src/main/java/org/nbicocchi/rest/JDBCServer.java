@@ -24,7 +24,7 @@ public class JDBCServer {
         DBManager.setConnection(
                 Utils.JDBC_Driver_SQLite,
                 Utils.JDBC_URL_SQLite);
-        Statement statement = DBManager.getConnection().createStatement();
+        statement = DBManager.getConnection().createStatement();
 
         try {
             statement.executeQuery("SELECT * FROM sausage LIMIT 1");
@@ -63,8 +63,8 @@ public class JDBCServer {
         // Configure resources
 
         // POST - Add new
-        // For testing: curl -X POST -d length=36.6 -d diameter=29.5 -d weight=4.5 -d
-        // quality=Low http://localhost:8080/sausage/add
+        // For testing:
+        // curl -X POST -d length=36.6 -d diameter=29.5 -d weight=4.5 -d quality=Low http://localhost:8080/sausage/add
         post("/sausage/add", (request, response) -> {
             double length = Double.parseDouble(request.queryParams("length"));
             double diameter = Double.parseDouble(request.queryParams("diameter"));
@@ -109,8 +109,8 @@ public class JDBCServer {
         });
 
         // DELETE - delete
-        // For testing: curl -X DELETE
-        // http://localhost:8080/sausage/214bb0db-aa52-48be-b052-cd30f730ae79
+        // For testing:
+        // curl -X DELETE http://localhost:8080/sausage/214bb0db-aa52-48be-b052-cd30f730ae79
         delete("/sausage/:id", (request, response) -> {
             String id = request.params(":id");
             String query;
@@ -141,6 +141,7 @@ public class JDBCServer {
                         rs.getDouble("diameter"), rs.getDouble("weight"), rs.getString("quality")));
 
             }
+            System.out.println(l);
             return om.writeValueAsString(l);
         });
 
@@ -164,8 +165,8 @@ public class JDBCServer {
         });
 
         // GET - get by quality
-        // For testing: curl -X GET
-        // "http://localhost:8080/sausage/byquality?quality=High"
+        // For testing:
+        // curl -X GET "http://localhost:8080/sausage/byquality?quality=High"
         get("/sausage/byquality", (request, response) -> {
             String quality = request.queryParams("quality");
             String query = String.format("SELECT * FROM sausage WHERE quality='%s'", quality);
@@ -181,8 +182,8 @@ public class JDBCServer {
         });
 
         // GET - get by id
-        // For testing: curl -X GET
-        // http://localhost:8080/sausage/214bb0db-aa52-48be-b052-cd30f730ae79
+        // For testing:
+        // curl -X GET "http://localhost:8080/sausage/214bb0db-aa52-48be-b052-cd30f730ae79"
         get("/sausage/:id", (request, response) -> {
             String id = request.params(":id");
             String query;

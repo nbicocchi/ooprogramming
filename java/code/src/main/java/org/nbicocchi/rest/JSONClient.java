@@ -16,11 +16,6 @@ public class JSONClient implements Runnable {
     static Logger logger = LoggerFactory.getLogger(JSONClient.class);
     ObjectMapper om = new ObjectMapper();
 
-    public static void main(String[] args) {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(new JSONClient(), 0, 5, TimeUnit.SECONDS);
-    }
-
     public void getCity(String name) {
         String url = String.format("http://localhost:8080/%s", name);
         String json = Unirest.get(url).asString().getBody();
@@ -62,7 +57,11 @@ public class JSONClient implements Runnable {
         for (String city : cities) {
             getCity(city);
         }
-        getAll();
+    }
+
+    public static void main(String[] args) {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new JSONClient(), 0, 5, TimeUnit.SECONDS);
     }
 
 }
