@@ -17,7 +17,7 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 * [Anaconda](https://www.anaconda.com/products/individual)
 
 ### Misc
-* [Git distributed version control system](https://git-scm.com/downloads)
+* https://git-scm.com/
 * http://www.pythontutor.com/
 * https://www.w3resource.com/
 * https://www.programiz.com/
