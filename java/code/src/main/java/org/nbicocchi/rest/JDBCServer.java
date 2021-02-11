@@ -146,8 +146,8 @@ public class JDBCServer {
         });
 
         // GET - get by length
-        // For testing: curl -X GET
-        // "http://localhost:8080/sausage/bylength?min=28&max=32"
+        // For testing:
+        // curl -X GET "http://localhost:8080/sausage/bylength?min=28&max=32"
         get("/sausage/bylength", (request, response) -> {
             String min = request.queryParams("min");
             String max = request.queryParams("max");

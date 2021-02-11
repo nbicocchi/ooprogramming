@@ -76,9 +76,11 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Constructors
 * Upcasting and Downcasting (Inheritance)
 * Overloading and Overriding (Polymorphism)
-* Abstract methods and classes
+* Abstract methods
+* Abstract classes
 * Interfaces
 * Packages
+* UML class diagrams
 
 [M4] Collections Framework (JCF)
 
@@ -97,9 +99,9 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 [M6] Functional Interfaces
 
-* Lambda functions
-* Lambda and functional interfaces 
-* Streams
+* ~~Lambda functions~~
+* ~~Lambda and functional interfaces~~ 
+* ~~Streams~~
 
 [M7] Exceptions
 
@@ -174,31 +176,29 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 [M4] Project Management
 
-* Standard library
+* Standard library (an introduction)
 * Modules and packages
-* Code testing
 * Best Practices
-
-[M5] Scientific Python
-* Numpy array (ndarray) initialization and data types
-* Indexing and slicing
-* Mathematical computations on arrays
-* Reshaping
-
 
 ## Exam
 During the final exam students are expected:
 
-* to discuss about the structure, the internals and engineering choices of their home project (could be developed in Java, Python, or C# which is very similar to Java). It is worth noticing that the project is not supposed to be developed alone without supervision, but mostly during the course. The whole development process and related discussions with Prof. Bicocchi will be evaluated.
+* to discuss about the structure, the internals and engineering choices of their home project (could be developed either in Java or Python). It is worth noticing that the project is not supposed to be developed alone without supervision, but mostly during the course. The whole development process and related discussions with Prof. Bicocchi will be evaluated.
 
-* to pass an oral examination about the Java and Python languages (short written exercises might be used, see topics above)
+* to pass an oral examination about the Java and Python languages. Quizzes and short written exercises will be also used for assessing actual programming skills. 
 
 ## FAQ
 Can we develop the project in groups of 1 or 3 people?
-> No, groups must be composed of two 2 people. There are no exceptions. The use of git for developing and sharing code is strongly advised. People unable to find a teammate should write to me.
+> No, groups must be composed of two 2 people. There are no exceptions. The use of git for developing and sharing code is mandatory. People unable to find a teammate should contact me. Groups should be composed by teammates with similar skills and desire to code. Exceptions to this rule will be negatively evaluated.
+
+Can we use Unity, JavaScript, TypeScript, Flutter, Swift, C++, C#?
+> No! Only Java and Python are allowed.
 
 Which kind of project can we do?
-> You can code a video game, a mobile app, a managing software. Concerning video games, Unity is allowed but the project must contain a significant portion of object oriented code.
+> You can code a video game, a mobile app, a managing software. See examples in the repository as a reference.
+
+Which IDE should I use for developing a mobile app?
+> Android Studio is a version of IntelliJ tuned for Android development.
 
 How big the project has to be?
 > A project comprised of 1000-3000 source lines of code is enough to grasp the feeling of what developing software means.
@@ -210,7 +210,8 @@ While developing I get strange errors. What should I do?
 > The first thing to do is copy and paste the error string on Google and check for eventual answers on StackOverflow. The vast majority of common errors has a dedicated page.
 
 If I need help, should I write an email to book an appointment?
-> No! You can directly come to my office during receiving hours. Wednesday 10 - 13, building 27, I floor.
+> Yes, I will be available every Wednesday morning for chatting.
 
 How does the exam is evaluated?
-> The final grade is the arithmetic average between the home project and the oral examination. For avoiding delusions, please study the theoretical part as well as having fun with the project!
+> The final grade is a subjectively-weighted (Prof. Bicocchi is the subject) average between the home project and the oral examination. 
+> The oral examination is composed of theoretical questions about Java and Python and simple quizzes and exercises that anyone that developed a 2000 lines software project is quickly able to solve.
