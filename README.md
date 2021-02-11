@@ -176,8 +176,9 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 [M4] Project Management
 
-* Standard library (an introduction)
 * Modules and packages
+* Virtual Environments and pip
+* Standard library (an introduction)
 * Best Practices
 
 ## Exam
