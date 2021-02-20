@@ -165,7 +165,9 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 * Iterable, Iterator, Generator
 * List, Tuple, Set, Dictionary
-* Comprehension expressions
+* Generator Comprehension
+* List Comprehension
+* Itertools
 
 [M3] Object Oriented Programming
 
@@ -173,13 +175,6 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Getters, setters, properties, decorators
 * Encapsulation, inheritance, polymorphism 
 * Informal interfaces
-
-[M4] Project Management
-
-* Modules and packages
-* Virtual Environments and pip
-* Standard library (an introduction)
-* Best Practices
 
 ## Exam
 During the final exam students are expected:
