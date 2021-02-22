@@ -64,8 +64,8 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 * The Java environment
 * Primitive types
-* Strings and Arrays
 * Control statements
+* Strings and Arrays
 
 [M3] Object Oriented Programming
 
@@ -175,6 +175,8 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Getters, setters, properties, decorators
 * Encapsulation, inheritance, polymorphism 
 * Informal interfaces
+* Sorting objects
+* Modules and packages
 
 ## Exam
 During the final exam students are expected:
