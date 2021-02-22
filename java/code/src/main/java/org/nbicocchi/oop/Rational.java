@@ -28,7 +28,6 @@ public class Rational implements Comparable<Rational> {
     int denominator;
 
     public Rational(int numerator, int denominator) {
-        super();
         if (denominator == 0) {
             throw new IllegalArgumentException();
         }
@@ -78,7 +77,7 @@ public class Rational implements Comparable<Rational> {
     }
 
     public static void main(String[] args) {
-        Rational r4 = new Rational(1, 0);
+        // Rational r4 = new Rational(1, 0);
         ArrayList<Rational> l = new ArrayList<>();
         l.add(new Rational(1, 3));
         l.add(new Rational(1, 9));
