@@ -30,10 +30,8 @@ public class EvenOddCounter {
                 oddNumberCount++;
             }
         }
-
         System.out.println("Number of even numbers: " + evenNumberCount);
         System.out.println("Number of odd numbers: " + oddNumberCount);
-
     }
 
     /**
