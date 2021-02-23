@@ -81,7 +81,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 * Abstract classes
 * Interfaces
 * Packages
-* UML class diagrams
+* ~~UML class diagrams~~
 
 [M4] Collections Framework (JCF)
 
