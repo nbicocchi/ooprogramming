@@ -1,6 +1,5 @@
 package org.nbicocchi.swing.imagecomparator;
 
-
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +9,10 @@ interface ProgressListener {
 }
 
 public abstract class AbstractComparator implements Runnable {
-    List<ProgressListener> listeners = new ArrayList<>();
-
     protected BufferedImage img_a;
     protected BufferedImage img_b;
     protected float similarity;
+    List<ProgressListener> listeners = new ArrayList<>();
 
     public AbstractComparator(BufferedImage img_a, BufferedImage img_b) {
         this.img_a = img_a;
@@ -41,6 +39,5 @@ public abstract class AbstractComparator implements Runnable {
     public float getSimilarity() {
         return similarity;
     }
-
 
 }

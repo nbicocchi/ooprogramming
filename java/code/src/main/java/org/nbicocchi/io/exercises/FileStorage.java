@@ -30,6 +30,19 @@ import java.util.Scanner;
  * @author Nicola Bicocchi
  */
 public class FileStorage {
+    public static void main(String[] args) {
+        FileStorage manager = new FileStorage();
+        Student student = manager.generateStudent();
+
+        try {
+            manager.saveText(student, Paths.get(Utils.ooprogrammingdir(), "student.bin").toString());
+            manager.saveBin(student, Paths.get(Utils.ooprogrammingdir(), "student.txt").toString());
+            manager.saveObj(student, Paths.get(Utils.ooprogrammingdir(), "student.obj").toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Student generateStudent() {
         System.out.println("Insert a student (e.g., name,surname,average): ");
         Scanner scr = new Scanner(System.in);
@@ -60,18 +73,5 @@ public class FileStorage {
         out.writeObject(s);
         out.close();
         System.out.println("[OK] Saved as object file");
-    }
-
-    public static void main(String[] args) {
-        FileStorage manager = new FileStorage();
-        Student student = manager.generateStudent();
-
-        try {
-            manager.saveText(student, Paths.get(Utils.ooprogrammingdir(), "student.bin").toString());
-            manager.saveBin(student, Paths.get(Utils.ooprogrammingdir(), "student.txt").toString());
-            manager.saveObj(student, Paths.get(Utils.ooprogrammingdir(), "student.obj").toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

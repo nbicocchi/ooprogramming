@@ -28,21 +28,6 @@ public class Street {
         return cars;
     }
 
-    public void insertCar(int km) {
-        cars[km]++;
-    }
-
-    public int getCarsByPosition(int km) {
-        return cars[km];
-    }
-
-    public void progress() {
-        for (int i = cars.length - 1; i > 0; i--) {
-            cars[i] = cars[i - 1];
-        }
-        cars[0] = 0;
-    }
-
     @Override
     public String toString() {
         return "Street [cars=" + Arrays.toString(cars) + "]";
@@ -61,5 +46,20 @@ public class Street {
         System.out.println(s);
         s.progress();
         System.out.println(s);
+    }
+
+    public void insertCar(int km) {
+        cars[km]++;
+    }
+
+    public int getCarsByPosition(int km) {
+        return cars[km];
+    }
+
+    public void progress() {
+        for (int i = cars.length - 1; i > 0; i--) {
+            cars[i] = cars[i - 1];
+        }
+        cars[0] = 0;
     }
 }

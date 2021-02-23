@@ -16,20 +16,6 @@ import java.util.List;
  * @author Nicola Bicocchi
  */
 public class StringChecker {
-    public void check(String s) throws ParseException {
-        boolean waitingLetter = true;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (Character.isDigit(c) && (waitingLetter)) {
-                throw new ParseException(s, i);
-            }
-            if (Character.isLetter(c) && (!waitingLetter)) {
-                throw new ParseException(s, i);
-            }
-            waitingLetter = !waitingLetter;
-        }
-    }
-
     public static void main(String[] args) {
         List<String> l = new ArrayList<>();
         l.add("rrr6t8f0d0e");
@@ -46,6 +32,20 @@ public class StringChecker {
             } catch (ParseException e) {
                 System.out.println("[FAIL]");
             }
+        }
+    }
+
+    public void check(String s) throws ParseException {
+        boolean waitingLetter = true;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c) && (waitingLetter)) {
+                throw new ParseException(s, i);
+            }
+            if (Character.isLetter(c) && (!waitingLetter)) {
+                throw new ParseException(s, i);
+            }
+            waitingLetter = !waitingLetter;
         }
     }
 }

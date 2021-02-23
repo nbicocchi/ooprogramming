@@ -15,6 +15,15 @@ package org.nbicocchi.exceptions.exercises;
  * @author Nicola Bicocchi
  */
 public class PartialDelegation {
+    public static void main(String[] args) {
+        PartialDelegation t = new PartialDelegation();
+        try {
+            t.f();
+        } catch (fException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void f() throws fException {
         try {
             g();
@@ -25,14 +34,5 @@ public class PartialDelegation {
 
     public void g() throws gException {
         throw new gException();
-    }
-
-    public static void main(String[] args) {
-        PartialDelegation t = new PartialDelegation();
-        try {
-            t.f();
-        } catch (fException e) {
-            e.printStackTrace();
-        }
     }
 }

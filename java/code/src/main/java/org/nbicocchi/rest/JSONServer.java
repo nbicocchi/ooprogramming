@@ -11,9 +11,8 @@ import static spark.Spark.port;
 public class JSONServer {
     ObjectMapper om = new ObjectMapper();
 
-    TimeZone getTimeZone(String name) {
-        Calendar c = Calendar.getInstance(java.util.TimeZone.getTimeZone(name));
-        return new TimeZone(name, c.get(Calendar.HOUR), c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
+    public static void main(String[] args) {
+        new JSONServer().run();
     }
 
     public void run() {
@@ -42,7 +41,8 @@ public class JSONServer {
 
     }
 
-    public static void main(String[] args) {
-        new JSONServer().run();
+    TimeZone getTimeZone(String name) {
+        Calendar c = Calendar.getInstance(java.util.TimeZone.getTimeZone(name));
+        return new TimeZone(name, c.get(Calendar.HOUR), c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
     }
 }

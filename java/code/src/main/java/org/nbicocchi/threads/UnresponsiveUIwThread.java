@@ -7,35 +7,11 @@ import java.awt.event.ActionListener;
 
 public class UnresponsiveUIwThread extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
-    private boolean running = false;
-    private int countValue = 1;
-
     private final JTextField tfCount;
     private final JButton btnStart;
     private final JButton btnStop;
-
-    public UnresponsiveUIwThread() {
-        super("Counter");
-        JPanel p1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        p1.add(new JLabel("Counter"));
-
-        tfCount = new JTextField("" + countValue, 10);
-        tfCount.setEditable(false);
-        p1.add(tfCount);
-
-        btnStart = new JButton("Start Counting");
-        btnStart.addActionListener(this);
-        p1.add(btnStart);
-
-        btnStop = new JButton("Stop Counting");
-        btnStop.addActionListener(this);
-        p1.add(btnStop);
-
-        add(p1);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 120);
-        setVisible(true);
-    }
+    private boolean running = false;
+    private int countValue = 1;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -70,5 +46,28 @@ public class UnresponsiveUIwThread extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(UnresponsiveUIwThread::new);
+    }
+
+    public UnresponsiveUIwThread() {
+        super("Counter");
+        JPanel p1 = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        p1.add(new JLabel("Counter"));
+
+        tfCount = new JTextField("" + countValue, 10);
+        tfCount.setEditable(false);
+        p1.add(tfCount);
+
+        btnStart = new JButton("Start Counting");
+        btnStart.addActionListener(this);
+        p1.add(btnStart);
+
+        btnStop = new JButton("Stop Counting");
+        btnStop.addActionListener(this);
+        p1.add(btnStop);
+
+        add(p1);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 120);
+        setVisible(true);
     }
 }

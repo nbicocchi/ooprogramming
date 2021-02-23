@@ -1,5 +1,7 @@
 package org.nbicocchi.generics;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 /**
@@ -13,24 +15,6 @@ public class Shop<T> implements Iterable<T> {
 
     public Shop() {
         l = new LinkedList<>();
-    }
-
-    T sell() {
-        return l.removeLast();
-    }
-
-    void buy(T item) {
-        l.addFirst(item);
-    }
-
-    void sell(List<? super T> items, int nItems) {
-        for (int i = 0; i < nItems; i++) {
-            items.add(l.removeLast());
-        }
-    }
-
-    void buy(List<? extends T> items) {
-        l.addAll(items);
     }
 
     @Override
@@ -74,5 +58,23 @@ public class Shop<T> implements Iterable<T> {
         lp = new ArrayList<>();
         fs.sell(lp, 3);
         System.out.println(lp);
+    }
+
+    void buy(T item) {
+        l.addFirst(item);
+    }
+
+    T sell() {
+        return l.removeLast();
+    }
+
+    void buy(List<? extends T> items) {
+        l.addAll(items);
+    }
+
+    void sell(List<? super T> items, int nItems) {
+        for (int i = 0; i < nItems; i++) {
+            items.add(l.removeLast());
+        }
     }
 }

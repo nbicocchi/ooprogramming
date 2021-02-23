@@ -9,6 +9,23 @@ public class MouseDrag extends JFrame {
     private static final long serialVersionUID = 1L;
     int startX, startY, endX, endY;
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MouseDrag::new);
+    }
+
+    public MouseDrag() {
+        DrawPanel drawPanel = new DrawPanel();
+        MyListener listener = new MyListener();
+        drawPanel.addMouseListener(listener);
+        drawPanel.addMouseMotionListener(listener);
+
+        setContentPane(drawPanel);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(400, 250);
+        setTitle("Mouse Drag");
+        setVisible(true);
+    }
+
     private class DrawPanel extends JPanel {
         private static final long serialVersionUID = 1L;
 
@@ -28,34 +45,17 @@ public class MouseDrag extends JFrame {
         }
 
         @Override
-        public void mouseDragged(MouseEvent evt) {
+        public void mouseReleased(MouseEvent evt) {
             endX = evt.getX();
             endY = evt.getY();
             repaint();
         }
 
         @Override
-        public void mouseReleased(MouseEvent evt) {
+        public void mouseDragged(MouseEvent evt) {
             endX = evt.getX();
             endY = evt.getY();
             repaint();
         }
-    }
-
-    public MouseDrag() {
-        DrawPanel drawPanel = new DrawPanel();
-        MyListener listener = new MyListener();
-        drawPanel.addMouseListener(listener);
-        drawPanel.addMouseMotionListener(listener);
-
-        setContentPane(drawPanel);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 250);
-        setTitle("Mouse Drag");
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MouseDrag::new);
     }
 }

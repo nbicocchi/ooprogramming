@@ -13,26 +13,7 @@ public class KeyboardListener extends JFrame implements KeyListener {
     JPanel p;
     JLabel l;
 
-    public KeyboardListener() {
-        lastChars = new ArrayList<>(Arrays.asList(0, 0, 0));
-
-        p = new JPanel(new BorderLayout());
-        l = new JLabel("");
-        p.add(l, BorderLayout.PAGE_END);
-
-        setContentPane(p);
-        getContentPane().setFocusable(true);
-        getContentPane().addKeyListener(this);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Testing Key Listener");
-        setSize(300, 200);
-        setVisible(true);
-    }
-
     public void keyTyped(KeyEvent e) {
-    }
-
-    public void keyReleased(KeyEvent e) {
     }
 
     public void keyPressed(KeyEvent e) {
@@ -54,7 +35,26 @@ public class KeyboardListener extends JFrame implements KeyListener {
         repaint();
     }
 
+    public void keyReleased(KeyEvent e) {
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(KeyboardListener::new);
+    }
+
+    public KeyboardListener() {
+        lastChars = new ArrayList<>(Arrays.asList(0, 0, 0));
+
+        p = new JPanel(new BorderLayout());
+        l = new JLabel("");
+        p.add(l, BorderLayout.PAGE_END);
+
+        setContentPane(p);
+        getContentPane().setFocusable(true);
+        getContentPane().addKeyListener(this);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Testing Key Listener");
+        setSize(300, 200);
+        setVisible(true);
     }
 }

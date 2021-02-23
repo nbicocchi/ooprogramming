@@ -34,6 +34,58 @@ public class Train implements Serializable {
         this.stops = new ArrayList<>();
     }
 
+    public void addStop(Station stop) {
+        stops.add(stop);
+    }
+
+    public void removeStopByName(String stopName) {
+        for (Iterator<Station> i = stops.iterator(); i.hasNext(); ) {
+            Station stop = i.next();
+            if (stop.getName().equals(stopName)) {
+                i.remove();
+            }
+        }
+    }
+
+    public void removeStopByCode(String stopName) {
+        for (Iterator<Station> i = stops.iterator(); i.hasNext(); ) {
+            Station stop = i.next();
+            if (stop.getCode().equals(stopName)) {
+                i.remove();
+            }
+        }
+    }
+
+    public int getNumberOfStops() {
+        return stops.size();
+    }
+
+    public float getMaxMoney() {
+        return places * priceKm * km;
+    }
+
+    @Override
+    public String toString() {
+        // StringBuffers are mutable Java Strings
+        // Here trains build a char-oriented representation of themselves
+        StringBuilder out = new StringBuilder();
+
+        out.append(getClass().getName()).append(",");
+        out.append(getStart().toString()).append(",");
+        out.append(getEnd().toString()).append(",");
+
+        out.append(this.getStops().size()).append(",");
+        for (Station s : getStops()) {
+            out.append(s.toString()).append(",");
+        }
+
+        out.append(getStarttime()).append(",");
+        out.append(getEndtime()).append(",");
+        out.append(getPlaces()).append(",");
+        out.append(getKm()).append(",");
+        return out.toString();
+    }
+
     public Station getStart() {
         return start;
     }
@@ -48,6 +100,10 @@ public class Train implements Serializable {
 
     public void setEnd(Station end) {
         this.end = end;
+    }
+
+    public ArrayList<Station> getStops() {
+        return stops;
     }
 
     public String getStarttime() {
@@ -82,64 +138,8 @@ public class Train implements Serializable {
         this.km = km;
     }
 
-    public void addStop(Station stop) {
-        stops.add(stop);
-    }
-
-    public void removeStopByName(String stopName) {
-        for (Iterator<Station> i = stops.iterator(); i.hasNext(); ) {
-            Station stop = i.next();
-            if (stop.getName().equals(stopName)) {
-                i.remove();
-            }
-        }
-    }
-
-    public void removeStopByCode(String stopName) {
-        for (Iterator<Station> i = stops.iterator(); i.hasNext(); ) {
-            Station stop = i.next();
-            if (stop.getCode().equals(stopName)) {
-                i.remove();
-            }
-        }
-    }
-
-    public ArrayList<Station> getStops() {
-        return stops;
-    }
-
     public void setStops(ArrayList<Station> stops) {
         this.stops = stops;
-    }
-
-    public int getNumberOfStops() {
-        return stops.size();
-    }
-
-    public float getMaxMoney() {
-        return places * priceKm * km;
-    }
-
-    @Override
-    public String toString() {
-        // StringBuffers are mutable Java Strings
-        // Here trains build a char-oriented representation of themselves
-        StringBuilder out = new StringBuilder();
-
-        out.append(getClass().getName()).append(",");
-        out.append(getStart().toString()).append(",");
-        out.append(getEnd().toString()).append(",");
-
-        out.append(this.getStops().size()).append(",");
-        for (Station s : getStops()) {
-            out.append(s.toString()).append(",");
-        }
-
-        out.append(getStarttime()).append(",");
-        out.append(getEndtime()).append(",");
-        out.append(getPlaces()).append(",");
-        out.append(getKm()).append(",");
-        return out.toString();
     }
 
     public byte[] toByteArray() throws IOException {

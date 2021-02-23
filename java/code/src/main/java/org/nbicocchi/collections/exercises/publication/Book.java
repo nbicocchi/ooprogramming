@@ -11,9 +11,9 @@ public class Book extends Publication {
     String ISBN;
 
     /**
-     * @param title
-     * @param pubDate
-     * @param ISBN
+     * @param title   Title of the book
+     * @param pubDate Publication date of the book
+     * @param ISBN    ISBN Code of the book
      */
     public Book(String title, GregorianCalendar pubDate, String ISBN) {
         super(title, pubDate);

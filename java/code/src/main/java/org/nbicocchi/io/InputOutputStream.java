@@ -15,37 +15,7 @@ import java.nio.file.Paths;
 public class InputOutputStream {
     static Logger logger = LoggerFactory.getLogger(InputOutputStream.class);
 
-    /**
-     * Copy chars from a generic inputstream to a generic outputstream
-     */
-    public static void copy(InputStream r, OutputStream w, String filename, double size) throws IOException {
-        int c;
-        long begin, end;
-
-        begin = System.nanoTime();
-        while ((c = r.read()) != -1) {
-            w.write(c);
-        }
-        end = System.nanoTime();
-        logger.info(String.format("%s() [%.1fMB/S]", filename, size / ((end - begin) / 1000.0)));
-    }
-
-    /**
-     * Copy chars from a generic inputstream to a generic outputstream in a
-     * single pass
-     */
-    public static void copySinglePass(InputStream r, OutputStream w, String filename, double size) throws IOException {
-        byte[] buffer = new byte[(int) size];
-        long begin, end;
-
-        begin = System.nanoTime();
-        r.read(buffer);
-        w.write(buffer);
-        end = System.nanoTime();
-        logger.info(String.format("%s() [%.1fMB/S]", filename, size / ((end - begin) / 1000.0)));
-    }
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String fin = Paths.get("src/main/resources/images/shuttle.jpg").toString();
         String fout = Paths.get(Utils.ooprogrammingdir(), "shuttle.jpg").toString();
         double size = new File(fin).length();
@@ -76,5 +46,35 @@ public class InputOutputStream {
         } catch (IOException e) {
             logger.info(String.format("%s failed", "copy_single_pass"));
         }
+    }
+
+    /**
+     * Copy chars from a generic inputstream to a generic outputstream
+     */
+    public static void copy(InputStream r, OutputStream w, String filename, double size) throws IOException {
+        int c;
+        long begin, end;
+
+        begin = System.nanoTime();
+        while ((c = r.read()) != -1) {
+            w.write(c);
+        }
+        end = System.nanoTime();
+        logger.info(String.format("%s() [%.1fMB/S]", filename, size / ((end - begin) / 1000.0)));
+    }
+
+    /**
+     * Copy chars from a generic inputstream to a generic outputstream in a
+     * single pass
+     */
+    public static void copySinglePass(InputStream r, OutputStream w, String filename, double size) throws IOException {
+        byte[] buffer = new byte[(int) size];
+        long begin, end;
+
+        begin = System.nanoTime();
+        r.read(buffer);
+        w.write(buffer);
+        end = System.nanoTime();
+        logger.info(String.format("%s() [%.1fMB/S]", filename, size / ((end - begin) / 1000.0)));
     }
 }

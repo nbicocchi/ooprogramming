@@ -1,6 +1,5 @@
 package org.nbicocchi.swing.imagecomparator;
 
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;

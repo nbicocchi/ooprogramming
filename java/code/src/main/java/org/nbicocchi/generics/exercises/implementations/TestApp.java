@@ -13,8 +13,8 @@ import org.nbicocchi.utils.Student;
 public class TestApp {
     public static void main(String[] args) {
         GenericList<Student> l;
-        l = new GenericArrayList<>();
-        // l = new GenericLinkedList<Student>();
+        //l = new GenericArrayList<>();
+        l = new GenericLinkedList<>();
         l.add(new Student("Padre", "Maronno", 28.4));
         l.add(new Student("Anna", "Pannocchia", 26.3));
         l.add(new Student("Maccio", "Capatonda", 29.4));

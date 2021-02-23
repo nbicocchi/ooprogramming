@@ -29,6 +29,19 @@ public class StringProcessor {
         this.v = v;
     }
 
+    public static void main(String[] args) {
+        String[] v1 = {"Nicola", "Marzia", "Agata", "Dharma"};
+        String[] v2 = {"Nicola", "Marzia", "Agata", "Dharma"};
+        StringProcessor sp1 = new StringProcessor(v1);
+        StringProcessor sp2 = new StringProcessor(v2);
+
+        System.out.println("shortest=" + sp1.findShortest());
+        System.out.println("search=" + sp1.search("Marzia"));
+        sp1.reverse();
+        // False because sp1 has been reversed
+        System.out.println("equals=" + sp1.equals(sp2));
+    }
+
     public int findShortest() {
         int min_pos = 0;
         int min_length = 128;
@@ -69,18 +82,5 @@ public class StringProcessor {
             return false;
         StringProcessor other = (StringProcessor) obj;
         return Arrays.equals(v, other.v);
-    }
-
-    public static void main(String[] args) {
-        String[] v1 = {"Nicola", "Marzia", "Agata", "Dharma"};
-        String[] v2 = {"Nicola", "Marzia", "Agata", "Dharma"};
-        StringProcessor sp1 = new StringProcessor(v1);
-        StringProcessor sp2 = new StringProcessor(v2);
-
-        System.out.println("shortest=" + sp1.findShortest());
-        System.out.println("search=" + sp1.search("Marzia"));
-        sp1.reverse();
-        // False because sp1 has been reversed
-        System.out.println("equals=" + sp1.equals(sp2));
     }
 }

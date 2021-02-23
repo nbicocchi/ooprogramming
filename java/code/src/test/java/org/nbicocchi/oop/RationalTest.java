@@ -2,15 +2,14 @@ package org.nbicocchi.oop;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class RationalTest {
     @Test
     public void constructorThrowIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class,
-                ()->{
-            new Rational(1, 0);
-                  });
+                () -> new Rational(1, 0));
     }
 
     @Test

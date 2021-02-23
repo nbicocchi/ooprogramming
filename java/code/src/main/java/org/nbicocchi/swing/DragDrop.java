@@ -11,27 +11,9 @@ public class DragDrop extends JFrame implements DropTargetListener {
     DropTarget dt;
     JTextField tf;
 
-    public DragDrop() {
-        super("Drag & Drop Example");
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        tf = new JTextField();
-        dt = new DropTarget(tf, this);
-
-        this.getContentPane().add(tf, BorderLayout.CENTER);
-        this.setSize(400, 60);
-        this.setVisible(true);
-    }
-
     @Override
     public void dragEnter(DropTargetDragEvent e) {
         System.out.println("Drag Init");
-    }
-
-    @Override
-    public void dragExit(DropTargetEvent e) {
-        System.out.println("Drag End");
     }
 
     @Override
@@ -42,6 +24,11 @@ public class DragDrop extends JFrame implements DropTargetListener {
     @Override
     public void dropActionChanged(DropTargetDragEvent e) {
         System.out.println("Drop Action Changed");
+    }
+
+    @Override
+    public void dragExit(DropTargetEvent e) {
+        System.out.println("Drag End");
     }
 
     @Override
@@ -87,6 +74,19 @@ public class DragDrop extends JFrame implements DropTargetListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(DragDrop::new);
+    }
+
+    public DragDrop() {
+        super("Drag & Drop Example");
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        tf = new JTextField();
+        dt = new DropTarget(tf, this);
+
+        this.getContentPane().add(tf, BorderLayout.CENTER);
+        this.setSize(400, 60);
+        this.setVisible(true);
     }
 
 }

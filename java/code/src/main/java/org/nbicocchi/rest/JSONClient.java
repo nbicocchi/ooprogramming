@@ -16,23 +16,6 @@ public class JSONClient implements Runnable {
     static Logger logger = LoggerFactory.getLogger(JSONClient.class);
     ObjectMapper om = new ObjectMapper();
 
-    public void getCity(String name) {
-        String url = String.format("http://localhost:8080/%s", name);
-        String json = Unirest.get(url).asString().getBody();
-
-        // JSON to object mapping
-        TimeZone timeZone = null;
-        try {
-            timeZone = om.readValue(json, TimeZone.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // logging
-        logger.info(json);
-        logger.info(timeZone != null ? timeZone.toString() : null);
-    }
-
     @SuppressWarnings("unchecked")
     public void getAll() {
         String url = "http://localhost:8080/all";
@@ -57,6 +40,23 @@ public class JSONClient implements Runnable {
         for (String city : cities) {
             getCity(city);
         }
+    }
+
+    public void getCity(String name) {
+        String url = String.format("http://localhost:8080/%s", name);
+        String json = Unirest.get(url).asString().getBody();
+
+        // JSON to object mapping
+        TimeZone timeZone = null;
+        try {
+            timeZone = om.readValue(json, TimeZone.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // logging
+        logger.info(json);
+        logger.info(timeZone != null ? timeZone.toString() : null);
     }
 
     public static void main(String[] args) {

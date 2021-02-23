@@ -29,6 +29,25 @@ public class Table {
         this.b = b;
     }
 
+    @Override
+    public String toString() {
+        if (!ready)
+            compute();
+        return table;
+    }
+
+    public static void main(String[] args) {
+        Table t = new Table(8, 8);
+        System.out.println(t);
+        System.out.println(t.sum());
+    }
+
+    public int sum() {
+        if (!ready)
+            compute();
+        return sum;
+    }
+
     private void compute() {
         sum = 0;
         StringBuilder sb = new StringBuilder();
@@ -41,24 +60,5 @@ public class Table {
         }
         table = sb.toString();
         ready = true;
-    }
-
-    public int sum() {
-        if (!ready)
-            compute();
-        return sum;
-    }
-
-    @Override
-    public String toString() {
-        if (!ready)
-            compute();
-        return table;
-    }
-
-    public static void main(String[] args) {
-        Table t = new Table(8, 8);
-        System.out.println(t);
-        System.out.println(t.sum());
     }
 }

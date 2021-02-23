@@ -4,15 +4,13 @@ package org.nbicocchi.oop;
  * Implement a Body class representing a two-dimensional point (x, y) capable of
  * moving with a certain speed (vx, vy).
  * <p>
- * The class have to implement three constructors:
- * Body() - Setting x = y = vy = vy = 0
- * Body(x, y) Setting x, y as parameters and vx = vy = 0
- * Body(x, y, vx, vy) Setting x, y, vx, vy
+ * The class have to implement three constructors: Body() - Setting x = y = vy =
+ * vy = 0 Body(x, y) Setting x, y as parameters and vx = vy = 0 Body(x, y, vx,
+ * vy) Setting x, y, vx, vy
  * <p>
- * The class have also to implement the following methods:
- * getters and setters for x, y, vx, vy
- * progress(t) updating coordinates x, y by considering a steady movement at velocity vx, vy
- * toString() printing x, y, vx, vy
+ * The class have also to implement the following methods: getters and setters
+ * for x, y, vx, vy progress(t) updating coordinates x, y by considering a
+ * steady movement at velocity vx, vy toString() printing x, y, vx, vy
  * <p>
  * Also, a demonstrative main() function have to be implemented.
  *
@@ -151,6 +149,26 @@ public class Body {
         this.vY = vY;
     }
 
+    @Override
+    public String toString() {
+        return "Body{" +
+                "x=" + x +
+                ", y=" + y +
+                ", v_x=" + vX +
+                ", v_y=" + vY +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        Body b = new Body(0, 0);
+        b.setSpeed(1, 1);
+        b.progress(1);
+        System.out.println(b);
+        b.setSpeed(-1, -1);
+        b.progress(2);
+        System.out.println(b);
+    }
+
     /**
      * Set the x and y components of velocity
      *
@@ -171,26 +189,6 @@ public class Body {
     public void progress(double t) {
         x += vX * t;
         y += vY * t;
-    }
-
-    @Override
-    public String toString() {
-        return "Body{" +
-                "x=" + x +
-                ", y=" + y +
-                ", v_x=" + vX +
-                ", v_y=" + vY +
-                '}';
-    }
-
-    public static void main(String[] args) {
-        Body b = new Body(0, 0);
-        b.setSpeed(1, 1);
-        b.progress(1);
-        System.out.println(b);
-        b.setSpeed(-1, -1);
-        b.progress(2);
-        System.out.println(b);
     }
 
 }

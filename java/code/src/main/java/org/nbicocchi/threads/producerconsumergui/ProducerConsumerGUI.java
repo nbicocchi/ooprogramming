@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerConsumerGUI extends JFrame implements ChangeListener, SizeListener {
+    public static final int SIZE = 100;
+    public static final int MIN_WAIT = 100;
+    public static final int MAX_WAIT = 1000;
+    public static final int INIT_WAIT = 100;
     private static final long serialVersionUID = 1L;
     protected JSlider speedProducer;
     protected JSlider speedConsumer;
@@ -17,12 +21,6 @@ public class ProducerConsumerGUI extends JFrame implements ChangeListener, SizeL
     protected Consumer c;
     protected Thread tP;
     protected Thread tC;
-
-    public static final int SIZE = 100;
-    public static final int MIN_WAIT = 100;
-    public static final int MAX_WAIT = 1000;
-    public static final int INIT_WAIT = 100;
-
 
     public ProducerConsumerGUI() {
         super("Producer-Consumer");

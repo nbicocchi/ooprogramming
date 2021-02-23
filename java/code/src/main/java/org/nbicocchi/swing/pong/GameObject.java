@@ -11,17 +11,17 @@ public interface GameObject {
 
     int getX();
 
-    int getY();
-
     void setX(int x);
+
+    int getY();
 
     void setY(int y);
 
     int getSpeedX();
 
-    int getSpeedY();
-
     void setSpeedX(int sx);
+
+    int getSpeedY();
 
     void setSpeedY(int sy);
 }

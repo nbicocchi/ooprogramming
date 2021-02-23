@@ -2,7 +2,7 @@ package org.nbicocchi.oop;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class StreetTest {
     @Test
@@ -28,8 +28,5 @@ public class StreetTest {
         assertEquals(1, s.getCarsByPosition(4));
         assertEquals(0, s.getCarsByPosition(0));
     }
-
-
-
 
 }

@@ -85,30 +85,35 @@ public class JTableRender extends JPanel {
         sportColumn.setCellRenderer(renderer);
     }
 
+    public static void main(String[] args) {
+        // Schedule a job for the event-dispatching thread:
+        // creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("TableRenderDemo");
+
+            // Create and set up the content pane.
+            JTableRender newContentPane = new JTableRender();
+            newContentPane.setOpaque(true); // content panes must be opaque
+            frame.setContentPane(newContentPane);
+
+            // Display the window.
+            frame.pack();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        });
+    }
+
     class MyTableModel extends AbstractTableModel {
         private static final long serialVersionUID = 1L;
+        public final Object[] longValues = {"Jane", "Kathy", "None of the above", 20, true};
         private final String[] columnNames = {"First Name", "Last Name", "Sport", "# of Years", "Vegetarian"};
         private final Object[][] data = {{"Kathy", "Smith", "Snowboarding", 5, false},
                 {"John", "Doe", "Rowing", 3, true}, {"Sue", "Black", "Knitting", 2, false},
                 {"Jane", "White", "Speed reading", 20, true}, {"Joe", "Brown", "Pool", 10, false}};
 
-        public final Object[] longValues = {"Jane", "Kathy", "None of the above", 20, true};
-
-        public int getColumnCount() {
-            return columnNames.length;
-        }
-
-        public int getRowCount() {
-            return data.length;
-        }
-
         @Override
         public String getColumnName(int col) {
             return columnNames[col];
-        }
-
-        public Object getValueAt(int row, int col) {
-            return data[row][col];
         }
 
         /*
@@ -163,23 +168,17 @@ public class JTableRender extends JPanel {
             }
             System.out.println("--------------------------");
         }
-    }
 
-    public static void main(String[] args) {
-        // Schedule a job for the event-dispatching thread:
-        // creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("TableRenderDemo");
+        public int getRowCount() {
+            return data.length;
+        }
 
-            // Create and set up the content pane.
-            JTableRender newContentPane = new JTableRender();
-            newContentPane.setOpaque(true); // content panes must be opaque
-            frame.setContentPane(newContentPane);
+        public int getColumnCount() {
+            return columnNames.length;
+        }
 
-            // Display the window.
-            frame.pack();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-        });
+        public Object getValueAt(int row, int col) {
+            return data[row][col];
+        }
     }
 }

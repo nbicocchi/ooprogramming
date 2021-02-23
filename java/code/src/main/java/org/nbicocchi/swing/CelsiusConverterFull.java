@@ -12,6 +12,33 @@ public class CelsiusConverterFull extends JFrame implements ActionListener {
     private final JTextField fahrenheitTF;
     private final JTextField celsiusTF;
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == CFButton) {
+            double tempFahrenheit = Double.parseDouble(celsiusTF.getText()) * 1.8 + 32;
+            fahrenheitTF.setText(Double.toString(tempFahrenheit));
+
+            if (tempFahrenheit < 32) {
+                JOptionPane.showMessageDialog(this, "Water freezes here!", "Temperature Warning",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
+        }
+        if (e.getSource() == FCButton) {
+            double tempCelsius = (Double.parseDouble(fahrenheitTF.getText()) - 32) * 0.555;
+            celsiusTF.setText(Double.toString(tempCelsius));
+
+            if (tempCelsius < 0) {
+                JOptionPane.showMessageDialog(this, "Water freezes here!", "Temperature Warning",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(CelsiusConverterFull::new);
+    }
+
     public CelsiusConverterFull() {
         super("Celsius Converter");
         celsiusTF = new JTextField("0");
@@ -40,32 +67,5 @@ public class CelsiusConverterFull extends JFrame implements ActionListener {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(200, 100);
         setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == CFButton) {
-            double tempFahrenheit = Double.parseDouble(celsiusTF.getText()) * 1.8 + 32;
-            fahrenheitTF.setText(Double.toString(tempFahrenheit));
-
-            if (tempFahrenheit < 32) {
-                JOptionPane.showMessageDialog(this, "Water freezes here!", "Temperature Warning",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-
-        }
-        if (e.getSource() == FCButton) {
-            double tempCelsius = (Double.parseDouble(fahrenheitTF.getText()) - 32) * 0.555;
-            celsiusTF.setText(Double.toString(tempCelsius));
-
-            if (tempCelsius < 0) {
-                JOptionPane.showMessageDialog(this, "Water freezes here!", "Temperature Warning",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(CelsiusConverterFull::new);
     }
 }

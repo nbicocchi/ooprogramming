@@ -28,28 +28,6 @@ public abstract class BankAccount {
     }
 
     /**
-     * Increase balance by amount
-     *
-     * @param amount
-     */
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance = balance + amount;
-        }
-    }
-
-    /**
-     * Decrease balance by amount
-     *
-     * @param amount
-     */
-    public void withdraw(double amount) {
-        if (amount > 0) {
-            balance = balance - amount;
-        }
-    }
-
-    /**
      * Return current balance of the account
      *
      * @return Current balance
@@ -62,11 +40,33 @@ public abstract class BankAccount {
      * Withdraw amount from local account and deposit the same amount to other
      * account
      *
-     * @param amount
-     * @param other
+     * @param amount The amount to be transferred
+     * @param other  The other bank account
      */
     public void transfer(double amount, BankAccount other) {
         withdraw(amount);
         other.deposit(amount);
+    }
+
+    /**
+     * Decrease balance by amount
+     *
+     * @param amount The amount to be withdrawn
+     */
+    public void withdraw(double amount) {
+        if (amount > 0) {
+            balance = balance - amount;
+        }
+    }
+
+    /**
+     * Increase balance by amount
+     *
+     * @param amount The amount to be deposited
+     */
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance = balance + amount;
+        }
     }
 }

@@ -13,14 +13,12 @@ import java.awt.image.*;
  * run time to select which part you want to be shown.
  */
 public class MandelbrotPanel extends JPanel {
-    private static final long serialVersionUID = 1L;
-
     /**
      * Number of non-black colours in the colour table (the last entry is always
      * black, and is not included in this number).
      */
     public static final int NUM_COLORS = 255;
-
+    private static final long serialVersionUID = 1L;
     /**
      * Colour table for this component (actually the BufferedImage)
      */
@@ -110,31 +108,6 @@ public class MandelbrotPanel extends JPanel {
     }
 
     /**
-     * Perform the Mandelbrot iteration for a single complex coordinate until
-     * the iteration terminates or the given depth limit is reached.
-     *
-     * @param re_c,im_c current complex coordinate
-     * @param limit     depth limit for iteration
-     * @return number of iterations performed (0 ... <tt>limit</tt> + 1)
-     */
-    public static int iterate(double re_c, double im_c, int limit) {
-        int depth = 0;                // number of iterations
-        double re_z = 0, im_z = 0;        // current value of z
-        double re_z_sqr = 0, im_z_sqr = 0;    // squared values
-
-        // iterate until |z| >= 2 or limit exceeded
-        while (re_z_sqr + im_z_sqr < 4 && ++depth <= limit) {
-            re_z_sqr = re_z * re_z;        // calculate squares
-            im_z_sqr = im_z * im_z;
-
-            im_z = 2 * re_z * im_z + im_c;    // perform iteration
-            re_z = re_z_sqr - im_z_sqr + re_c;
-        }
-
-        return depth;
-    }
-
-    /**
      * Redraw this component. Recalculates the BufferedImage if needed (the
      * BufferedImage is cached for efficiency reasons) and draws it into the
      * component. This implementation uses a simple 8-bit IndexColorModel and a
@@ -177,6 +150,31 @@ public class MandelbrotPanel extends JPanel {
     }
 
     /**
+     * Perform the Mandelbrot iteration for a single complex coordinate until
+     * the iteration terminates or the given depth limit is reached.
+     *
+     * @param re_c,im_c current complex coordinate
+     * @param limit     depth limit for iteration
+     * @return number of iterations performed (0 ... <tt>limit</tt> + 1)
+     */
+    public static int iterate(double re_c, double im_c, int limit) {
+        int depth = 0;                // number of iterations
+        double re_z = 0, im_z = 0;        // current value of z
+        double re_z_sqr = 0, im_z_sqr = 0;    // squared values
+
+        // iterate until |z| >= 2 or limit exceeded
+        while (re_z_sqr + im_z_sqr < 4 && ++depth <= limit) {
+            re_z_sqr = re_z * re_z;        // calculate squares
+            im_z_sqr = im_z * im_z;
+
+            im_z = 2 * re_z * im_z + im_c;    // perform iteration
+            re_z = re_z_sqr - im_z_sqr + re_c;
+        }
+
+        return depth;
+    }
+
+    /**
      * MouseListener and MouseMotionListener to allow the user to draw a zoom
      * rectangle with the mouse inside the image (which will then be magnified
      * to show only the selected region).
@@ -194,6 +192,19 @@ public class MandelbrotPanel extends JPanel {
         private int x, y;
 
         /**
+         * A mouse button was clicked -&gt; zoom out if right mouse button
+         */
+        @Override
+        public void mouseClicked(MouseEvent event) {
+            if (SwingUtilities.isRightMouseButton(event))
+                // (min + max)/2 - 2 (max - min)/2 = 1.5 min - 0.5 max etc.
+                setInterval(1.5 * re_min - 0.5 * re_max,
+                        1.5 * re_max - 0.5 * re_min,
+                        1.5 * im_min - 0.5 * im_max,
+                        1.5 * im_max - 0.5 * im_min);
+        }
+
+        /**
          * A mouse button was pressed -&gt; start rectangle
          */
         @Override
@@ -205,22 +216,6 @@ public class MandelbrotPanel extends JPanel {
             graph.setXORMode(Color.white);    // use XOR-mode (for erase)
             graph.drawRect(start_x, start_y, x - start_x, y - start_y);
             graph.dispose();        // dispose graphics
-        }
-
-        /**
-         * The mouse has moved while a mouse button was pressed.
-         */
-        @Override
-        public void mouseDragged(MouseEvent event) {
-            Graphics graph = getGraphics();    // graphics context
-
-            graph.setXORMode(Color.white);    // use XOR-mode (for erase)
-            graph.drawRect(start_x, start_y, x - start_x, y - start_y);
-            x = event.getX();        // store position
-            y = event.getY();
-            graph.drawRect(start_x, start_y, x - start_x, y - start_y);
-            graph.dispose();        // dispose graphics
-
         }
 
         /**
@@ -256,16 +251,19 @@ public class MandelbrotPanel extends JPanel {
         }
 
         /**
-         * A mouse button was clicked -&gt; zoom out if right mouse button
+         * The mouse has moved while a mouse button was pressed.
          */
         @Override
-        public void mouseClicked(MouseEvent event) {
-            if (SwingUtilities.isRightMouseButton(event))
-                // (min + max)/2 - 2 (max - min)/2 = 1.5 min - 0.5 max etc.
-                setInterval(1.5 * re_min - 0.5 * re_max,
-                        1.5 * re_max - 0.5 * re_min,
-                        1.5 * im_min - 0.5 * im_max,
-                        1.5 * im_max - 0.5 * im_min);
+        public void mouseDragged(MouseEvent event) {
+            Graphics graph = getGraphics();    // graphics context
+
+            graph.setXORMode(Color.white);    // use XOR-mode (for erase)
+            graph.drawRect(start_x, start_y, x - start_x, y - start_y);
+            x = event.getX();        // store position
+            y = event.getY();
+            graph.drawRect(start_x, start_y, x - start_x, y - start_y);
+            graph.dispose();        // dispose graphics
+
         }
 
         @Override

@@ -23,6 +23,37 @@ public class SM_Updatable extends JFrame implements ActionListener {
     JButton btnInsert;
     JButton btnRemove;
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnNext) {
+            model.next();
+            showItem();
+        } else if (e.getSource() == btnPrev) {
+            model.previous();
+            showItem();
+        } else if (e.getSource() == btnInsert) {
+            String[] v = JOptionPane.showInputDialog(this, "Insert sausage (length;diameter;weight;quality)")
+                    .split(";");
+            model.insert(Double.parseDouble(v[0]), Double.parseDouble(v[1]), Double.parseDouble(v[2]), v[3]);
+            showItem();
+        } else if (e.getSource() == btnRemove) {
+            model.remove();
+            showItem();
+        } else if (e.getSource() == tfLength) {
+            model.setLength(Double.parseDouble(tfLength.getText()));
+        } else if (e.getSource() == tfDiameter) {
+            model.setDiameter(Double.parseDouble(tfDiameter.getText()));
+        } else if (e.getSource() == tfWeight) {
+            model.setWeight(Double.parseDouble(tfWeight.getText()));
+        } else if (e.getSource() == cbQuality) {
+            model.setQuality(Objects.requireNonNull(cbQuality.getSelectedItem()).toString());
+        }
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(SM_Updatable::new);
+    }
+
     public SM_Updatable() {
         super("Sausage Manager");
 
@@ -92,36 +123,5 @@ public class SM_Updatable extends JFrame implements ActionListener {
             tfDiameter.setText("");
             tfWeight.setText("");
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnNext) {
-            model.next();
-            showItem();
-        } else if (e.getSource() == btnPrev) {
-            model.previous();
-            showItem();
-        } else if (e.getSource() == btnInsert) {
-            String[] v = JOptionPane.showInputDialog(this, "Insert sausage (length;diameter;weight;quality)")
-                    .split(";");
-            model.insert(Double.parseDouble(v[0]), Double.parseDouble(v[1]), Double.parseDouble(v[2]), v[3]);
-            showItem();
-        } else if (e.getSource() == btnRemove) {
-            model.remove();
-            showItem();
-        } else if (e.getSource() == tfLength) {
-            model.setLength(Double.parseDouble(tfLength.getText()));
-        } else if (e.getSource() == tfDiameter) {
-            model.setDiameter(Double.parseDouble(tfDiameter.getText()));
-        } else if (e.getSource() == tfWeight) {
-            model.setWeight(Double.parseDouble(tfWeight.getText()));
-        } else if (e.getSource() == cbQuality) {
-            model.setQuality(Objects.requireNonNull(cbQuality.getSelectedItem()).toString());
-        }
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(SM_Updatable::new);
     }
 }

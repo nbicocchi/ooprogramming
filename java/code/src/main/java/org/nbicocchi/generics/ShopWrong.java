@@ -16,26 +16,6 @@ public class ShopWrong<T> implements Iterable<T> {
         l = new LinkedList<>();
     }
 
-    T sell() {
-        return l.removeLast();
-    }
-
-    void buy(T item) {
-        l.addFirst(item);
-    }
-
-    void sell(List<T> items, int nItems) {
-        for (int i = 0; i < nItems; i++) {
-            items.add(l.removeLast());
-        }
-    }
-
-    void buy(List<T> items) {
-        for (T item : items) {
-            l.add(item);
-        }
-    }
-
     @Override
     public Iterator<T> iterator() {
         return l.iterator();
@@ -75,5 +55,23 @@ public class ShopWrong<T> implements Iterable<T> {
 
         // compile error if uncommented
         // fs.sell(new ArrayList<Product>(), 3);
+    }
+
+    void buy(T item) {
+        l.addFirst(item);
+    }
+
+    T sell() {
+        return l.removeLast();
+    }
+
+    void buy(List<T> items) {
+        l.addAll(items);
+    }
+
+    void sell(List<T> items, int nItems) {
+        for (int i = 0; i < nItems; i++) {
+            items.add(l.removeLast());
+        }
     }
 }

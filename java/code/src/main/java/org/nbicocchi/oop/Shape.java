@@ -48,22 +48,6 @@ public class Shape implements Comparable<Shape> {
         this.height = height;
     }
 
-    public double getPosX() {
-        return posX;
-    }
-
-    public void setPosX(double posX) {
-        this.posX = posX;
-    }
-
-    public double getPosY() {
-        return posY;
-    }
-
-    public void setPosY(double posY) {
-        this.posY = posY;
-    }
-
     public int compareTo(Shape o) {
         return Double.compare(width * height, o.width * o.height);
     }
@@ -92,5 +76,21 @@ public class Shape implements Comparable<Shape> {
         s.setPosX(5);
         s.setPosY(5);
         System.out.println(s.getPosX() + " " + s.getPosY());
+    }
+
+    public double getPosX() {
+        return posX;
+    }
+
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
     }
 }

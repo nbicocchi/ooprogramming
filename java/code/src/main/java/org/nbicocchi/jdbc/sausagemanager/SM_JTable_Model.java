@@ -10,12 +10,10 @@ import java.sql.Statement;
 
 public class SM_JTable_Model extends AbstractTableModel {
     private static final long serialVersionUID = 1L;
-    private ResultSet rs;
-
     private final String[] columnNames = new String[]{"id", "length", "diameter", "weight", "quality"};
-
     private final Class<?>[] columnClass = new Class<?>[]{String.class, Double.class, Double.class, Double.class,
             String.class};
+    private ResultSet rs;
 
     public SM_JTable_Model() throws SQLException {
         DBManager.setConnection(
@@ -65,11 +63,6 @@ public class SM_JTable_Model extends AbstractTableModel {
     }
 
     @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return true;
-    }
-
-    @Override
     public String getColumnName(int column) {
         return columnNames[column];
     }
@@ -77,6 +70,44 @@ public class SM_JTable_Model extends AbstractTableModel {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         return columnClass[columnIndex];
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        try {
+            rs.absolute(rowIndex);
+            switch (columnIndex) {
+                case 0:
+                    rs.updateString("id", (String) aValue);
+                    rs.updateRow();
+                    break;
+                case 1:
+                    rs.updateDouble("length", (Double) aValue);
+                    rs.updateRow();
+                    break;
+                case 2:
+                    rs.updateDouble("diameter", (Double) aValue);
+                    rs.updateRow();
+                    break;
+                case 3:
+                    rs.updateDouble("weight", (Double) aValue);
+                    rs.updateRow();
+                    break;
+                case 4:
+                    rs.updateString("quality", (String) aValue);
+                    rs.updateRow();
+                    break;
+            }
+            rs.updateRow();
+            fireTableCellUpdated(rowIndex, columnIndex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -117,38 +148,5 @@ public class SM_JTable_Model extends AbstractTableModel {
             // do nothing
         }
         return null;
-    }
-
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        try {
-            rs.absolute(rowIndex);
-            switch (columnIndex) {
-                case 0:
-                    rs.updateString("id", (String) aValue);
-                    rs.updateRow();
-                    break;
-                case 1:
-                    rs.updateDouble("length", (Double) aValue);
-                    rs.updateRow();
-                    break;
-                case 2:
-                    rs.updateDouble("diameter", (Double) aValue);
-                    rs.updateRow();
-                    break;
-                case 3:
-                    rs.updateDouble("weight", (Double) aValue);
-                    rs.updateRow();
-                    break;
-                case 4:
-                    rs.updateString("quality", (String) aValue);
-                    rs.updateRow();
-                    break;
-            }
-            rs.updateRow();
-            fireTableCellUpdated(rowIndex, columnIndex);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

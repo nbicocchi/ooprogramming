@@ -1,10 +1,6 @@
 package org.nbicocchi.jdbc;
 
-import org.nbicocchi.utils.Utils;
-
-import java.nio.file.Paths;
 import java.sql.*;
-import java.util.TimeZone;
 
 /**
  * Class for managing DB connections making use of the singleton pattern.

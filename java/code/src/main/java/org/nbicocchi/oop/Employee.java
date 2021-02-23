@@ -52,14 +52,6 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
     @Override
     public String toString() {
         return "Employee{" +
@@ -81,5 +73,13 @@ public class Employee {
 
         System.out.println(e1);
         System.out.println(e2);
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }

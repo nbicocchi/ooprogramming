@@ -7,19 +7,12 @@ import java.awt.event.MouseEvent;
 
 public class ImageButton extends JButton {
     private static final long serialVersionUID = 1L;
-    private boolean isEmptyButton;
     private final int x;
     private final int y;
+    private boolean isEmptyButton;
 
     public ImageButton(int x, int y) {
         super();
-        this.x = x;
-        this.y = y;
-        initUI();
-    }
-
-    public ImageButton(Image image, int x, int y) {
-        super(new ImageIcon(image));
         this.x = x;
         this.y = y;
         initUI();
@@ -40,6 +33,13 @@ public class ImageButton extends JButton {
                 setBorder(BorderFactory.createLineBorder(Color.gray));
             }
         });
+    }
+
+    public ImageButton(Image image, int x, int y) {
+        super(new ImageIcon(image));
+        this.x = x;
+        this.y = y;
+        initUI();
     }
 
     public void setEmptyButton() {

@@ -5,19 +5,13 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.nbicocchi.utils.Student;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Library {
     ArrayList<Rent> rents;
 
     public Library() {
-        try {
-            rents = load();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        rents = load();
         System.out.println("- All Rents:");
         for (Rent r : rents) {
             System.out.println(r);
@@ -33,7 +27,7 @@ public class Library {
 
     }
 
-    private ArrayList<Rent> load() throws ParseException {
+    private ArrayList<Rent> load() {
         ArrayList<Rent> r = new ArrayList<>();
         DateTimeFormatter f = DateTimeFormat.forPattern("dd/MM/yyyy");
 
@@ -53,6 +47,18 @@ public class Library {
         return r;
     }
 
+    private Rent getLongestRent() {
+        Rent longestRent = rents.get(0);
+
+        for (Rent r : rents) {
+            if ((r.getEnd().getMillis() - r.getBegin().getMillis()) >
+                    (longestRent.getEnd().getMillis() - longestRent.getBegin().getMillis())) {
+                longestRent = r;
+            }
+        }
+        return longestRent;
+    }
+
     private ArrayList<Rent> getFaults() {
         ArrayList<Rent> r = new ArrayList<>();
         for (int i = 0; i < rents.size() - 1; i++) {
@@ -68,17 +74,5 @@ public class Library {
             }
         }
         return r;
-    }
-
-    private Rent getLongestRent() {
-        Rent longestRent = rents.get(0);
-
-        for (Rent r : rents) {
-            if ((r.getEnd().getMillis() - r.getBegin().getMillis()) >
-                    (longestRent.getEnd().getMillis() - longestRent.getBegin().getMillis())) {
-                longestRent = r;
-            }
-        }
-        return longestRent;
     }
 }

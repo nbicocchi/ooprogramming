@@ -7,28 +7,6 @@ package org.nbicocchi.generics.exercises.implementations;
  */
 public class GenericLinkedList<T> extends GenericAbstractList<T> {
 
-    private class Node<E> {
-        Node<E> next;
-        E data;
-
-        public Node(E data) {
-            this.next = null;
-            this.data = data;
-        }
-
-        public E getData() {
-            return data;
-        }
-
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public void setNext(Node<E> next) {
-            this.next = next;
-        }
-    }
-
     private Node<T> head = null;
     private int size = 0;
 
@@ -103,5 +81,27 @@ public class GenericLinkedList<T> extends GenericAbstractList<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    private static class Node<E> {
+        Node<E> next;
+        E data;
+
+        public Node(E data) {
+            this.next = null;
+            this.data = data;
+        }
+
+        public E getData() {
+            return data;
+        }
+
+        public Node<E> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<E> next) {
+            this.next = next;
+        }
     }
 }

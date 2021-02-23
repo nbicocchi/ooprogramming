@@ -4,6 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class InterceptionModels {
+    public static void main(String[] args) {
+        new InterceptionModels().f(5);
+    }
+
     public void f(int i) {
         g(i);
     }
@@ -19,9 +23,5 @@ public class InterceptionModels {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        new InterceptionModels().f(5);
     }
 }

@@ -52,13 +52,70 @@ public class BasicOperations {
         }
     }
 
-    /**
-     * Prints the current ResultSet row
-     */
-    public void printRow(ResultSet rs) throws SQLException {
-        System.out.println("id=" + rs.getInt("id") + ", title=" + rs.getString("title") + ", author="
-                + rs.getString("author") + ", pages=" + rs.getInt("pages"));
+    public static void main(String[] args) {
+        try {
+            new BasicOperations().run();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void run() {
+        try {
+            System.out.println("\n- reading database...");
+            testSelect();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- updating database...");
+            testUpdate();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- reading database...");
+            testSelect();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- test scrollable...");
+            testScrollable();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- test updateable...");
+            testUpdateable();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- reading database...");
+            testSelect();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- test sensitive...");
+            testSensitive();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
+
+        try {
+            System.out.println("\n- closing database...");
+            DBManager.close();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+        }
     }
 
     /**
@@ -130,69 +187,12 @@ public class BasicOperations {
         }
     }
 
-    public void run() {
-        try {
-            System.out.println("\n- reading database...");
-            testSelect();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
+    /**
+     * Prints the current ResultSet row
+     */
+    public void printRow(ResultSet rs) throws SQLException {
+        System.out.println("id=" + rs.getInt("id") + ", title=" + rs.getString("title") + ", author="
+                + rs.getString("author") + ", pages=" + rs.getInt("pages"));
 
-        try {
-            System.out.println("\n- updating database...");
-            testUpdate();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- reading database...");
-            testSelect();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- test scrollable...");
-            testScrollable();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- test updateable...");
-            testUpdateable();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- reading database...");
-            testSelect();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- test sensitive...");
-            testSensitive();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-
-        try {
-            System.out.println("\n- closing database...");
-            DBManager.close();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong... " + e.getMessage());
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            new BasicOperations().run();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

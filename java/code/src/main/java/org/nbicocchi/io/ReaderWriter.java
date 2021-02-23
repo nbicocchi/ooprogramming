@@ -15,22 +15,7 @@ import java.nio.file.Paths;
 public class ReaderWriter {
     static Logger logger = LoggerFactory.getLogger(ReaderWriter.class);
 
-    /**
-     * Copy chars from a generic reader to a generic writer
-     */
-    public static void copy(Reader r, Writer w, String fname, double size) throws IOException {
-        int c;
-        long begin, end;
-
-        begin = System.nanoTime();
-        while ((c = r.read()) != -1) {
-            w.write(c);
-        }
-        end = System.nanoTime();
-        logger.info(String.format("%s() [%.1fMB/S]", fname, size / ((end - begin) / 1000.0)));
-    }
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String fin = Paths.get("src/main/resources/text/webpage.html").toString();
         String fout = Paths.get(Utils.ooprogrammingdir(), "webpage.html").toString();
         double size = new File(fin).length();
@@ -53,6 +38,21 @@ public class ReaderWriter {
         } catch (IOException e) {
             logger.info(String.format("%s failed", "copy_to_stringwriter"));
         }
+    }
+
+    /**
+     * Copy chars from a generic reader to a generic writer
+     */
+    public static void copy(Reader r, Writer w, String fname, double size) throws IOException {
+        int c;
+        long begin, end;
+
+        begin = System.nanoTime();
+        while ((c = r.read()) != -1) {
+            w.write(c);
+        }
+        end = System.nanoTime();
+        logger.info(String.format("%s() [%.1fMB/S]", fname, size / ((end - begin) / 1000.0)));
     }
 
 }

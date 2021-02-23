@@ -31,6 +31,21 @@ public class URLReader {
         lastPage = new ArrayList<>();
     }
 
+    public static void main(String[] args) {
+        URLReader ur = new URLReader();
+        try {
+            System.out.println("Downloading page...");
+            ur.readPage("http://www.google.it");
+
+            System.out.println("Saving page...");
+            ur.savePage(Paths.get(Utils.ooprogrammingdir(), "www.google.it.html").toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong with I/O...");
+        }
+
+    }
+
     public void readPage(String urlname) throws IOException {
         URL url = new URL(urlname);
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -55,20 +70,5 @@ public class URLReader {
         }
 
         out.close();
-    }
-
-    public static void main(String[] args) {
-        URLReader ur = new URLReader();
-        try {
-            System.out.println("Downloading page...");
-            ur.readPage("http://www.google.it");
-
-            System.out.println("Saving page...");
-            ur.savePage(Paths.get(Utils.ooprogrammingdir(), "www.google.it.html").toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Something went wrong with I/O...");
-        }
-
     }
 }

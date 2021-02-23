@@ -3,11 +3,11 @@ package org.nbicocchi.threads.producerconsumergui;
 import java.util.List;
 
 class Producer extends AbstractObservable implements Runnable {
+    private final int limit;
     public int wait;
     public boolean running = true;
-    private int count = 0;
-    private final int limit;
     List<Integer> l;
+    private int count = 0;
 
     public Producer(int wait, List<Integer> l, int limit) {
         super();

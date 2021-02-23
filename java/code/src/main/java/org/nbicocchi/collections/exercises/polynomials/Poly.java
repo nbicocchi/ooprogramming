@@ -25,7 +25,6 @@ public interface Poly {
      */
     Poly derivative();
 
-
     /**
      * True if p equals the current object
      *
@@ -34,11 +33,10 @@ public interface Poly {
      */
     boolean equals(Poly p);
 
-
     /**
      * Returns the coefficient of the monomial with the specified degree
      *
-     * @param degree
+     * @param degree The degree to be queried (get the coefficient)
      * @return The coefficient of the monomial with the specified degree
      */
     double coefficient(int degree);

@@ -24,14 +24,6 @@ public class Circle {
         this.r = r;
     }
 
-    public static double getPI() {
-        return PI;
-    }
-
-    public static void setPI(double PI) {
-        Circle.PI = PI;
-    }
-
     public double getX() {
         return x;
     }
@@ -63,6 +55,14 @@ public class Circle {
                 ", y=" + y +
                 ", r=" + r +
                 '}';
+    }
+
+    public static double getPI() {
+        return PI;
+    }
+
+    public static void setPI(double PI) {
+        Circle.PI = PI;
     }
 
     public static void main(String[] args) {

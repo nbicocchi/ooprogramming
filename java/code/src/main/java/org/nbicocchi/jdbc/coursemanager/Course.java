@@ -1,6 +1,5 @@
 package org.nbicocchi.jdbc.coursemanager;
 
-
 import java.util.UUID;
 
 public class Course {

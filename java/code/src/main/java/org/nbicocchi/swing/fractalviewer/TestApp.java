@@ -1,6 +1,7 @@
 package org.nbicocchi.swing.fractalviewer;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Simple Java program to display the Mandelbrot set (using a special {@link
@@ -10,6 +11,13 @@ import javax.swing.*;
  */
 public class TestApp {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MandelbrotFrame(MandelbrotFrame.DEFAULT_LIMIT));
+        EventQueue.invokeLater(() -> {
+            JFrame f = new JFrame("Fractal viewer");
+            JPanel p = new MandelbrotPanel(255);
+            f.getContentPane().add(p);
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            f.setSize(800, 800);
+            f.setVisible(true);
+        });
     }
 }

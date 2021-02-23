@@ -15,6 +15,29 @@ public class SM_JTable extends JFrame implements ActionListener, TableModelListe
     JButton btInsert;
     JButton btDelete;
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btInsert) {
+            String[] v = JOptionPane.showInputDialog(this, "Insert sausage (length;diameter;weight;quality)")
+                    .split(";");
+            ((SM_JTable_Model) tResults.getModel()).insertRow(v);
+        }
+
+        if (e.getSource() == btDelete) {
+            ((SM_JTable_Model) tResults.getModel()).removeRow(tResults.getSelectedRow(),
+                    tResults.getSelectedRow());
+        }
+    }
+
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        System.out.println("The table has been modified!");
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(SM_JTable::new);
+    }
+
     public SM_JTable() {
         super("Sausage Manager");
 
@@ -43,28 +66,5 @@ public class SM_JTable extends JFrame implements ActionListener, TableModelListe
         setSize(600, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btInsert) {
-            String[] v = JOptionPane.showInputDialog(this, "Insert sausage (length;diameter;weight;quality)")
-                    .split(";");
-            ((SM_JTable_Model) tResults.getModel()).insertRow(v);
-        }
-
-        if (e.getSource() == btDelete) {
-            ((SM_JTable_Model) tResults.getModel()).removeRow(tResults.getSelectedRow(),
-                    tResults.getSelectedRow());
-        }
-    }
-
-    @Override
-    public void tableChanged(TableModelEvent e) {
-        System.out.println("The table has been modified!");
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(SM_JTable::new);
     }
 }

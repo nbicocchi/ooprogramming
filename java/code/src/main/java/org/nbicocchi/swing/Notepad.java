@@ -8,39 +8,9 @@ import java.io.*;
 public class Notepad extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
     private final JTextArea textArea;
-    private final JMenuBar menuBar;
-    private final JMenu file;
     private final JMenuItem openFile;
     private final JMenuItem saveFile;
     private final JMenuItem close;
-
-    public Notepad() {
-        super("A Simple Java Notepad");
-
-        menuBar = new JMenuBar();
-        file = new JMenu("File");
-        menuBar.add(file);
-
-        openFile = new JMenuItem("Open");
-        openFile.addActionListener(this);
-        file.add(openFile);
-
-        saveFile = new JMenuItem("Save");
-        saveFile.addActionListener(this);
-        file.add(saveFile);
-
-        close = new JMenuItem("Close");
-        close.addActionListener(this);
-        file.add(close);
-
-        textArea = new JTextArea("");
-        getContentPane().add(textArea);
-        setJMenuBar(menuBar);
-
-        setSize(600, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
-    }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.close)
@@ -81,5 +51,33 @@ public class Notepad extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Notepad::new);
+    }
+
+    public Notepad() {
+        super("A Simple Java Notepad");
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu file = new JMenu("File");
+        menuBar.add(file);
+
+        openFile = new JMenuItem("Open");
+        openFile.addActionListener(this);
+        file.add(openFile);
+
+        saveFile = new JMenuItem("Save");
+        saveFile.addActionListener(this);
+        file.add(saveFile);
+
+        close = new JMenuItem("Close");
+        close.addActionListener(this);
+        file.add(close);
+
+        textArea = new JTextArea("");
+        getContentPane().add(textArea);
+        setJMenuBar(menuBar);
+
+        setSize(600, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
 }

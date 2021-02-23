@@ -13,7 +13,7 @@ public class Utils {
 
     public static final String JDBC_Driver_MySQL = "com.mysql.cj.jdbc.Driver";
     public static final String JDBC_URL_MySQL = "jdbc:mysql://localhost:3306/jdbc_schema?user=nicola&password=qwertyuio&serverTimezone=" +
-                    TimeZone.getDefault().getID();
+            TimeZone.getDefault().getID();
 
     public static String ooprogrammingdir() {
         String path = String.format("%s%s%s%s%s", System.getProperty("user.home"), System.getProperty("file.separator"),

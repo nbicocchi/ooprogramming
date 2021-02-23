@@ -13,10 +13,10 @@ import java.util.Random;
 public class GamePanel extends JPanel implements Runnable {
     private static final long serialVersionUID = 1L;
     private static final int maxBalls = 5;
+    private final Properties props;
     private Clip sounds;
     private Ball[] balls;
     private ControlPanel controlPanel;
-    private final Properties props;
 
     public GamePanel(Properties props) {
         super();

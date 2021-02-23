@@ -3,9 +3,12 @@ package org.nbicocchi.swing;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class LayoutManager extends JFrame {
     private static final long serialVersionUID = 1L;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(LayoutManager::new);
+    }
 
     public LayoutManager() {
         JPanel p1 = new JPanel(new BorderLayout());
@@ -39,10 +42,6 @@ public class LayoutManager extends JFrame {
         setContentPane(p4);
         pack();
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(LayoutManager::new);
     }
 
 }
