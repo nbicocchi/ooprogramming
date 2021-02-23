@@ -3,7 +3,7 @@ package org.nbicocchi.basics;
 import java.util.Random;
 
 /**
- * Write a program with a method named isEven that accepts an int argument. The
+ * Write a program with a method named isEven() that accepts an int argument. The
  * method should return true if the argument is even, or false if otherwise. The
  * program's main method should use a loop to generate 100 random integers. It
  * should use the isEven method to determine whether each random number is even,
@@ -13,11 +13,9 @@ import java.util.Random;
  * @author Justin Musgrove
  */
 public class EvenOddCounter {
-
     private static final int RANDOM_NUMBERS = 100;
 
     public static void main(String[] args) {
-
         int evenNumberCount = 0;
         int oddNumberCount = 0;
 
@@ -43,11 +41,9 @@ public class EvenOddCounter {
      * @return true if the num is true otherwise false
      */
     public static boolean isEven(int num) {
-        boolean isEvenNumber = false;
-
-        if ((num % 2) == 0) {
-            isEvenNumber = true;
+        if (num % 2 == 0) {
+            return true;
         }
-        return isEvenNumber;
+        return false;
     }
 }

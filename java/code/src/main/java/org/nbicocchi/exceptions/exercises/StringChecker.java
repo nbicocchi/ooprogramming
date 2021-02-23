@@ -6,10 +6,10 @@ import java.util.List;
 
 /**
  * Write a class StringChecker capable of verifying if a String, passed as
- * parameter to its method check(), is an alternating sequence of letters and
+ * parameter to its check() method, is an alternating sequence of letters and
  * numbers (for example, a0b3h4z1r4).
  * <p>
- * check() uses ParseException for notifying the caller about eventual errors.
+ * check() uses ParseException for notifying the caller about eventual malformations.
  * <p>
  * Test your code with the main method below.
  *
