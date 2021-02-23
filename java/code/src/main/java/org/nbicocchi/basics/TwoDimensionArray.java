@@ -35,6 +35,27 @@ package org.nbicocchi.basics;
  * @author Nicola Bicocchi
  */
 public class TwoDimensionArray {
+    public static void main(String[] args) {
+        double[][] studentTestScores = {{65.5, 54.43, 23.54, 99.5}, {33.4, 22.55, 54.66, 11.12}};
+
+        // Process the double array.
+        System.out.println("Total : " + getTotal(studentTestScores));
+        System.out.println("Average : " + getAverage(studentTestScores));
+
+        System.out.println("Total of row 0 : " + getRowTotal(studentTestScores, 0));
+        System.out.println("Total of row 1 : " + getRowTotal(studentTestScores, 1));
+
+        System.out.println("Total of col 0 : " + getColumnTotal(studentTestScores, 0));
+        System.out.println("Total of col 1 : " + getColumnTotal(studentTestScores, 2));
+
+        System.out.println("Highest in row 0 : " + getHighestInRow(studentTestScores, 0));
+        System.out.println("Highest in row 1 : " + getHighestInRow(studentTestScores, 1));
+
+        System.out.println("Lowest in row 0 : " + getLowestInRow(studentTestScores, 0));
+        System.out.println("Lowest in row 1 : " + getLowestInRow(studentTestScores, 1));
+
+    }
+
     public static double getTotal(double[][] array) {
         double total = 0;
 
@@ -100,26 +121,5 @@ public class TwoDimensionArray {
             count += array[row].length;
         }
         return count;
-    }
-
-    public static void main(String[] args) {
-        double[][] studentTestScores = {{65.5, 54.43, 23.54, 99.5}, {33.4, 22.55, 54.66, 11.12}};
-
-        // Process the double array.
-        System.out.println("Total : " + getTotal(studentTestScores));
-        System.out.println("Average : " + getAverage(studentTestScores));
-
-        System.out.println("Total of row 0 : " + getRowTotal(studentTestScores, 0));
-        System.out.println("Total of row 1 : " + getRowTotal(studentTestScores, 1));
-
-        System.out.println("Total of col 0 : " + getColumnTotal(studentTestScores, 0));
-        System.out.println("Total of col 1 : " + getColumnTotal(studentTestScores, 2));
-
-        System.out.println("Highest in row 0 : " + getHighestInRow(studentTestScores, 0));
-        System.out.println("Highest in row 1 : " + getHighestInRow(studentTestScores, 1));
-
-        System.out.println("Lowest in row 0 : " + getLowestInRow(studentTestScores, 0));
-        System.out.println("Lowest in row 1 : " + getLowestInRow(studentTestScores, 1));
-
     }
 }

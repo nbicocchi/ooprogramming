@@ -1,5 +1,9 @@
 package org.nbicocchi.swing;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,21 +54,27 @@ public class Notepad extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel( new FlatLightLaf() );
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
+
         SwingUtilities.invokeLater(Notepad::new);
     }
 
     public Notepad() {
-        super("A Simple Java Notepad");
+        super("Yet Another Java Notepad");
 
         JMenuBar menuBar = new JMenuBar();
         JMenu file = new JMenu("File");
         menuBar.add(file);
 
-        openFile = new JMenuItem("Open");
+        openFile = new JMenuItem("Open...");
         openFile.addActionListener(this);
         file.add(openFile);
 
-        saveFile = new JMenuItem("Save");
+        saveFile = new JMenuItem("Save...");
         saveFile.addActionListener(this);
         file.add(saveFile);
 
@@ -73,10 +83,10 @@ public class Notepad extends JFrame implements ActionListener {
         file.add(close);
 
         textArea = new JTextArea("");
-        getContentPane().add(textArea);
+        getContentPane().add(new JScrollPane(textArea));
         setJMenuBar(menuBar);
 
-        setSize(600, 400);
+        setSize(640, 480);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }

@@ -6,30 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LambdaBasics {
-    public static void printStudentsWithAverage(List<Student> roster, double average) {
-        for (Student p : roster) {
-            if (p.getAverage() >= average) {
-                System.out.println(p);
-            }
-        }
-    }
-
-    public static void printStudentsWithinAverageRange(List<Student> roster, int low, int high) {
-        for (Student p : roster) {
-            if (low <= p.getAverage() && p.getAverage() < high) {
-                System.out.println(p);
-            }
-        }
-    }
-
-    public static void printStudents(List<Student> roster, CheckStudent tester) {
-        for (Student p : roster) {
-            if (tester.test(p)) {
-                System.out.println(p);
-            }
-        }
-    }
-
     public static void main(String[] args) {
         ArrayList<Student> l = new ArrayList<>();
         l.add(new Student("John", "Doe", 28));
@@ -54,5 +30,29 @@ public class LambdaBasics {
 
         System.out.println("printStudents() with lambda expression...");
         printStudents(l, (p) -> p.getAverage() >= 20 && p.getAverage() <= 24);
+    }
+
+    public static void printStudentsWithAverage(List<Student> roster, double average) {
+        for (Student p : roster) {
+            if (p.getAverage() >= average) {
+                System.out.println(p);
+            }
+        }
+    }
+
+    public static void printStudentsWithinAverageRange(List<Student> roster, int low, int high) {
+        for (Student p : roster) {
+            if (low <= p.getAverage() && p.getAverage() < high) {
+                System.out.println(p);
+            }
+        }
+    }
+
+    public static void printStudents(List<Student> roster, CheckStudent tester) {
+        for (Student p : roster) {
+            if (tester.test(p)) {
+                System.out.println(p);
+            }
+        }
     }
 }

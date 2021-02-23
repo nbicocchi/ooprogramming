@@ -21,15 +21,6 @@ public class Worker implements Runnable {
         return running;
     }
 
-    private boolean isPrime(int n) {
-        if (n == 1)
-            return true;
-        int i = 2;
-        while (n % i > 0)
-            i++;
-        return i == n;
-    }
-
     @Override
     public void run() {
         System.out.printf("[%s] Analyzing range: %d - %d\n", Thread.currentThread().getName(), start, start + range);
@@ -42,6 +33,15 @@ public class Worker implements Runnable {
         /* Callback to PrimeProducer for sending results */
         manager.listen(Thread.currentThread(), results);
         running = false;
+    }
+
+    private boolean isPrime(int n) {
+        if (n == 1)
+            return true;
+        int i = 2;
+        while (n % i > 0)
+            i++;
+        return i == n;
     }
 
 }

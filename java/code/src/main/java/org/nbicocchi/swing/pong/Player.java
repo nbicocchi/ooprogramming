@@ -27,11 +27,6 @@ public class Player extends AbstractGameObject {
         this.score = score;
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, w, h);
-    }
-
     public void update() {
         y += speedY;
     }
@@ -39,5 +34,10 @@ public class Player extends AbstractGameObject {
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRoundRect(x, y, w, h, 10, 10);
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, w, h);
     }
 }

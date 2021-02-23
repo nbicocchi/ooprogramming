@@ -112,6 +112,23 @@ public class PanelStudent extends JPanel implements ActionListener {
         update();
     }
 
+    public List<Student> getAllStudents() throws SQLException {
+        ArrayList<Student> students = new ArrayList<>();
+        Statement statement = DBManager.getConnection().createStatement();
+        String query = "SELECT * FROM students";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            students.add(
+                    new Student(Utils.asUUID(rs.getBytes("id")),
+                            rs.getString("name"),
+                            rs.getString("surname"),
+                            rs.getDate("birthdate"))
+            );
+        }
+        statement.close();
+        return students;
+    }
+
     public void update() {
         try {
             listStudents.clear();
@@ -135,6 +152,48 @@ public class PanelStudent extends JPanel implements ActionListener {
             tfBirthDate.setText("n/a");
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+
+    public List<Course> getAllCourses() throws SQLException {
+        ArrayList<Course> courses = new ArrayList<>();
+        Statement statement = DBManager.getConnection().createStatement();
+        String query = "SELECT * FROM courses";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            courses.add(
+                    new Course(Utils.asUUID(rs.getBytes("id")),
+                            rs.getString("name"),
+                            rs.getInt("teachers"),
+                            rs.getInt("cfu"))
+            );
+        }
+        statement.close();
+        return courses;
+    }
+
+    public List<Course> getStudentCourses(Student student) throws SQLException {
+        ArrayList<Course> courses = new ArrayList<>();
+        Statement statement = DBManager.getConnection().createStatement();
+        String query = String.format("SELECT\n" +
+                "courses.id,\n" +
+                "courses.name,\n" +
+                "courses.teachers,\n" +
+                "courses.cfu\n" +
+                "FROM students\n" +
+                "JOIN students_courses ON students.id = students_courses.student_id\n" +
+                "JOIN courses ON courses.id = students_courses.course_id\n" +
+                "WHERE students.id = UUID_TO_BIN('%s')", student.getID());
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            courses.add(
+                    new Course(Utils.asUUID(rs.getBytes("id")),
+                            rs.getString("name"),
+                            rs.getInt("teachers"),
+                            rs.getInt("cfu"))
+            );
+        }
+        statement.close();
+        return courses;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -186,23 +245,6 @@ public class PanelStudent extends JPanel implements ActionListener {
         }
     }
 
-    public List<Student> getAllStudents() throws SQLException {
-        ArrayList<Student> students = new ArrayList<>();
-        Statement statement = DBManager.getConnection().createStatement();
-        String query = "SELECT * FROM students";
-        ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            students.add(
-                    new Student(Utils.asUUID(rs.getBytes("id")),
-                            rs.getString("name"),
-                            rs.getString("surname"),
-                            rs.getDate("birthdate"))
-            );
-        }
-        statement.close();
-        return students;
-    }
-
     public void insertStudent(Student student) throws SQLException {
         Statement statement = DBManager.getConnection().createStatement();
         String query = String.format("INSERT INTO students (id, name, surname, birthdate) VALUES (UUID_TO_BIN('%s'), '%s', '%s', '%s')",
@@ -230,48 +272,6 @@ public class PanelStudent extends JPanel implements ActionListener {
                 student.getID());
         statement.executeUpdate(query);
         statement.close();
-    }
-
-    public List<Course> getAllCourses() throws SQLException {
-        ArrayList<Course> courses = new ArrayList<>();
-        Statement statement = DBManager.getConnection().createStatement();
-        String query = "SELECT * FROM courses";
-        ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            courses.add(
-                    new Course(Utils.asUUID(rs.getBytes("id")),
-                            rs.getString("name"),
-                            rs.getInt("teachers"),
-                            rs.getInt("cfu"))
-            );
-        }
-        statement.close();
-        return courses;
-    }
-
-    public List<Course> getStudentCourses(Student student) throws SQLException {
-        ArrayList<Course> courses = new ArrayList<>();
-        Statement statement = DBManager.getConnection().createStatement();
-        String query = String.format("SELECT\n" +
-                "courses.id,\n" +
-                "courses.name,\n" +
-                "courses.teachers,\n" +
-                "courses.cfu\n" +
-                "FROM students\n" +
-                "JOIN students_courses ON students.id = students_courses.student_id\n" +
-                "JOIN courses ON courses.id = students_courses.course_id\n" +
-                "WHERE students.id = UUID_TO_BIN('%s')", student.getID());
-        ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            courses.add(
-                    new Course(Utils.asUUID(rs.getBytes("id")),
-                            rs.getString("name"),
-                            rs.getInt("teachers"),
-                            rs.getInt("cfu"))
-            );
-        }
-        statement.close();
-        return courses;
     }
 
     public void addStudentCourse(Student student, Course course) throws SQLException {

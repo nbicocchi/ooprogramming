@@ -10,6 +10,10 @@ public class CelsiusConverterLayout extends JFrame {
     private final JTextField fahrenheitTF;
     private final JTextField celsiusTF;
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(CelsiusConverterLayout::new);
+    }
+
     public CelsiusConverterLayout() {
         super("Celsius Converter");
         celsiusTF = new JTextField("0");
@@ -36,10 +40,6 @@ public class CelsiusConverterLayout extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(200, 100);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(CelsiusConverterLayout::new);
     }
 }
 

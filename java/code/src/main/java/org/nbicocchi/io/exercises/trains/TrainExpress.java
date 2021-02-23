@@ -16,14 +16,6 @@ public class TrainExpress extends Train {
         this.restaurantPlaces = 50;
     }
 
-    public int getRestaurantPlaces() {
-        return restaurantPlaces;
-    }
-
-    public void setRestaurantPlaces(int restaurantPlaces) {
-        this.restaurantPlaces = restaurantPlaces;
-    }
-
     @Override
     public float getMaxMoney() {
         return (places * priceKmExpress + restaurantPlaces * priceKmRestaurant) * km;
@@ -32,6 +24,14 @@ public class TrainExpress extends Train {
     @Override
     public String toString() {
         return super.toString() + this.getRestaurantPlaces() + ",";
+    }
+
+    public int getRestaurantPlaces() {
+        return restaurantPlaces;
+    }
+
+    public void setRestaurantPlaces(int restaurantPlaces) {
+        this.restaurantPlaces = restaurantPlaces;
     }
 
     @Override

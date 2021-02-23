@@ -7,6 +7,30 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class StreamCreation {
+    public static void main(String[] args) {
+        Stream<Student> s;
+
+        /* Builder and accept() */
+        s = getStreamBuilderAccept();
+        s.forEach(System.out::println);
+
+        /* Builder and add() */
+        s = getStreamBuilderAdd();
+        s.forEach(System.out::println);
+
+        /* Stream.of() */
+        s = getStreamOf();
+        s.forEach(System.out::println);
+
+        /* Stream from List */
+        s = getStreamFromList();
+        s.forEach(System.out::println);
+
+        /* Stream from Array */
+        s = getStreamFromArray();
+        s.forEach(System.out::println);
+    }
+
     public static Stream<Student> getStreamBuilderAccept() {
         Stream.Builder<Student> sb = Stream.builder();
         sb.accept(new Student("Dimebag", "Darrell", 27));
@@ -49,29 +73,5 @@ public class StreamCreation {
         l[1] = new Student("Dimebag", "Darrell", 27);
         l[2] = new Student("Gene", "Hoglan", 22);
         return Arrays.stream(l);
-    }
-
-    public static void main(String[] args) {
-        Stream<Student> s;
-
-        /* Builder and accept() */
-        s = getStreamBuilderAccept();
-        s.forEach(System.out::println);
-
-        /* Builder and add() */
-        s = getStreamBuilderAdd();
-        s.forEach(System.out::println);
-
-        /* Stream.of() */
-        s = getStreamOf();
-        s.forEach(System.out::println);
-
-        /* Stream from List */
-        s = getStreamFromList();
-        s.forEach(System.out::println);
-
-        /* Stream from Array */
-        s = getStreamFromArray();
-        s.forEach(System.out::println);
     }
 }

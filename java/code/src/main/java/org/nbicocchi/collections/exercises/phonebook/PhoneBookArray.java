@@ -23,17 +23,6 @@ public class PhoneBookArray implements PhoneBook {
         pb.add(p);
     }
 
-    /**
-     * Add a person to the PhoneBook
-     *
-     * @param name    Name of the person
-     * @param surname Surname of the person
-     * @param phone   Phone of the person
-     */
-    public void addPerson(String name, String surname, String phone) {
-        pb.add(new Student(name, surname, phone));
-    }
-
     @Override
     public Student searchByName(String name) {
         for (Student p : pb) {
@@ -69,5 +58,16 @@ public class PhoneBookArray implements PhoneBook {
         Student p = searchByNumber(phone);
         if (p != null)
             pb.remove(p);
+    }
+
+    /**
+     * Add a person to the PhoneBook
+     *
+     * @param name    Name of the person
+     * @param surname Surname of the person
+     * @param phone   Phone of the person
+     */
+    public void addPerson(String name, String surname, String phone) {
+        pb.add(new Student(name, surname, phone));
     }
 }

@@ -6,6 +6,13 @@ import java.io.*;
 import java.nio.file.Paths;
 
 public class DataInputOutputStream {
+    public static void main(String[] args) throws IOException {
+        String filename = Paths.get(Utils.ooprogrammingdir(), "data_stream.bin").toString();
+        write_types(filename);
+        read_bytes(filename);
+        read_types(filename);
+    }
+
     // Write primitives to an output file
     public static void write_types(String filename) throws IOException {
         DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filename)));
@@ -76,12 +83,5 @@ public class DataInputOutputStream {
         }
         System.out.println();
         in.close();
-    }
-
-    public static void main(String[] args) throws IOException {
-        String filename = Paths.get(Utils.ooprogrammingdir(), "data_stream.bin").toString();
-        write_types(filename);
-        read_bytes(filename);
-        read_types(filename);
     }
 }

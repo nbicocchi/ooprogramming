@@ -20,17 +20,17 @@ public class SDCar extends Car {
         super.turnOff();
     }
 
+    @Override
+    public String toString() {
+        return "SDCar [isSelfDriving=" + isSelfDriving + ", isOn=" + isOn + ", licensePlate=" + licensePlate + "]";
+    }
+
     void turnSDOn() {
         isSelfDriving = true;
     }
 
     void turnSDOff() {
         isSelfDriving = false;
-    }
-
-    @Override
-    public String toString() {
-        return "SDCar [isSelfDriving=" + isSelfDriving + ", isOn=" + isOn + ", licensePlate=" + licensePlate + "]";
     }
 
 }

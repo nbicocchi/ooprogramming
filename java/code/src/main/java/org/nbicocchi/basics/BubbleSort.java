@@ -8,6 +8,14 @@ import java.util.Arrays;
  * @author Nicola Bicocchi
  */
 public class BubbleSort {
+    public static void main(String[] args) {
+        int[] v = {17, 21, 83, 14, 35, 69, 51, 33, 62};
+
+        System.out.println(Arrays.toString(v));
+        bubbleSort(v);
+        System.out.println(Arrays.toString(v));
+    }
+
     static void bubbleSort(int[] v) {
         boolean changed = true;
         while (changed) {
@@ -21,13 +29,5 @@ public class BubbleSort {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int[] v = {17, 21, 83, 14, 35, 69, 51, 33, 62};
-
-        System.out.println(Arrays.toString(v));
-        bubbleSort(v);
-        System.out.println(Arrays.toString(v));
     }
 }

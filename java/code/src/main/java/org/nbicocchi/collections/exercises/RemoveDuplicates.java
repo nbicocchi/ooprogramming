@@ -12,17 +12,6 @@ import java.util.Set;
  * @author Nicola Bicocchi
  */
 public class RemoveDuplicates {
-    /**
-     * Removes duplicates from a list using HashSets (long version)
-     *
-     * @param l list in which duplicates have to be removed
-     */
-    public static void removeDuplicates(List<Number> l) {
-        Set<Number> s = new HashSet<>(l);
-        l.clear();
-        l.addAll(s);
-    }
-
     public static void main(String[] args) {
         List<Number> l = new ArrayList<>();
         l.add(2);
@@ -33,6 +22,17 @@ public class RemoveDuplicates {
         System.out.println(l);
         removeDuplicates(l);
         System.out.println(l);
+    }
+
+    /**
+     * Removes duplicates from a list using HashSets (long version)
+     *
+     * @param l list in which duplicates have to be removed
+     */
+    public static void removeDuplicates(List<Number> l) {
+        Set<Number> s = new HashSet<>(l);
+        l.clear();
+        l.addAll(s);
     }
 
 }

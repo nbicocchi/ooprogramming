@@ -23,17 +23,6 @@ import java.util.Random;
 public class DiceGame {
     private static final int numberOfGames = 10;
 
-    /**
-     * Method should return a number that represents a side of a die in a random
-     * format.
-     *
-     * @return random number between 1 and 6
-     */
-    static int rollDie() {
-        Random randValue = new Random();
-        return randValue.nextInt(6) + 1;
-    }
-
     public static void main(String[] args) {
 
         int computerWins = 0, computerRoll;
@@ -72,5 +61,16 @@ public class DiceGame {
                 System.out.println("The game has ended in a tie!");
             }
         }
+    }
+
+    /**
+     * Method should return a number that represents a side of a die in a random
+     * format.
+     *
+     * @return random number between 1 and 6
+     */
+    static int rollDie() {
+        Random randValue = new Random();
+        return randValue.nextInt(6) + 1;
     }
 }

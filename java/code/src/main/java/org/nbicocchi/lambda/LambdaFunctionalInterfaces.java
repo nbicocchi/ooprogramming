@@ -10,6 +10,43 @@ import java.util.function.Predicate;
 
 public class LambdaFunctionalInterfaces {
 
+    public static void main(String[] args) {
+        ArrayList<Student> l = new ArrayList<>();
+        l.add(new Student("John", "Doe", 28));
+        l.add(new Student("Dimebag", "Darrell", 27));
+        l.add(new Student("Gene", "Hoglan", 22));
+        l.add(new Student("Tyler", "Durden", 26));
+        l.add(new Student("Diana", "Krall", 23));
+        l.add(new Student("Melody", "Gardot", 30));
+        l.add(new Student("Tim", "Buckley", 21));
+
+        System.out.println("processStudentsPredicate()...");
+        processStudentsPredicate(l, (p) -> p.getAverage() >= 20 && p.getAverage() <= 24);
+
+        System.out.println("processStudentsConsumer()...");
+        processStudentsConsumer(
+                l,
+                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
+                System.out::println
+        );
+
+        System.out.println("processStudentsFunction()...");
+        processStudentsFunction(
+                l,
+                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
+                Student::getName,
+                System.out::println
+        );
+
+        System.out.println("processElements()...");
+        processElements(
+                l,
+                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
+                Student::getName,
+                System.out::println
+        );
+    }
+
     public static void processStudentsPredicate(List<Student> roster,
                                                 Predicate<Student> tester) {
         for (Student p : roster) {
@@ -53,42 +90,5 @@ public class LambdaFunctionalInterfaces {
                 block.accept(data);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Student> l = new ArrayList<>();
-        l.add(new Student("John", "Doe", 28));
-        l.add(new Student("Dimebag", "Darrell", 27));
-        l.add(new Student("Gene", "Hoglan", 22));
-        l.add(new Student("Tyler", "Durden", 26));
-        l.add(new Student("Diana", "Krall", 23));
-        l.add(new Student("Melody", "Gardot", 30));
-        l.add(new Student("Tim", "Buckley", 21));
-
-        System.out.println("processStudentsPredicate()...");
-        processStudentsPredicate(l, (p) -> p.getAverage() >= 20 && p.getAverage() <= 24);
-
-        System.out.println("processStudentsConsumer()...");
-        processStudentsConsumer(
-                l,
-                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
-                System.out::println
-        );
-
-        System.out.println("processStudentsFunction()...");
-        processStudentsFunction(
-                l,
-                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
-                Student::getName,
-                System.out::println
-        );
-
-        System.out.println("processElements()...");
-        processElements(
-                l,
-                (p) -> p.getAverage() >= 20 && p.getAverage() <= 24,
-                Student::getName,
-                System.out::println
-        );
     }
 }

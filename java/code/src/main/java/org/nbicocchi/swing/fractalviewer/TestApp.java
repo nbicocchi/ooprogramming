@@ -1,5 +1,7 @@
 package org.nbicocchi.swing.fractalviewer;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+
 import javax.swing.*;
 import java.awt.*;
 

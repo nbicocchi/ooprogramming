@@ -75,6 +75,23 @@ public class PanelCourse extends JPanel implements ActionListener {
         update();
     }
 
+    public List<Course> getAllCourses() throws SQLException {
+        ArrayList<Course> courses = new ArrayList<>();
+        Statement statement = DBManager.getConnection().createStatement();
+        String query = "SELECT * FROM courses";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            courses.add(
+                    new Course(Utils.asUUID(rs.getBytes("id")),
+                            rs.getString("name"),
+                            rs.getInt("teachers"),
+                            rs.getInt("cfu"))
+            );
+        }
+        statement.close();
+        return courses;
+    }
+
     public void update() {
         try {
             listCourses.clear();
@@ -132,23 +149,6 @@ public class PanelCourse extends JPanel implements ActionListener {
         } finally {
             update();
         }
-    }
-
-    public List<Course> getAllCourses() throws SQLException {
-        ArrayList<Course> courses = new ArrayList<>();
-        Statement statement = DBManager.getConnection().createStatement();
-        String query = "SELECT * FROM courses";
-        ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            courses.add(
-                    new Course(Utils.asUUID(rs.getBytes("id")),
-                            rs.getString("name"),
-                            rs.getInt("teachers"),
-                            rs.getInt("cfu"))
-            );
-        }
-        statement.close();
-        return courses;
     }
 
     public void insertCourse(Course course) throws SQLException {

@@ -17,6 +17,17 @@ public class MyArrayList implements MyList {
     }
 
     @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for (Object o : elements) {
+            if (o != null) {
+                output.append("[").append(o.toString()).append("]");
+            }
+        }
+        return output.toString();
+    }
+
+    @Override
     public void add(Object data) {
         // we re-allocate before complete fullness
         if (size >= elements.length - 1) {
@@ -67,14 +78,4 @@ public class MyArrayList implements MyList {
         return size;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (Object o : elements) {
-            if (o != null) {
-                output.append("[").append(o.toString()).append("]");
-            }
-        }
-        return output.toString();
-    }
 }

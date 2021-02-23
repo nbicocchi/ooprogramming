@@ -17,11 +17,6 @@ public class Ball extends AbstractGameObject {
         this.speedY = speedY;
     }
 
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle(x, y, w, h);
-    }
-
     public void update() {
         x += speedX;
         y += speedY;
@@ -58,5 +53,10 @@ public class Ball extends AbstractGameObject {
     public void paint(Graphics g) {
         g.setColor(Color.ORANGE);
         g.fillOval(x, y, w, h);
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, w, h);
     }
 }

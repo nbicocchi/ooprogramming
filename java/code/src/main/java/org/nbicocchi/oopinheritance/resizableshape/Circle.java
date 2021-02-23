@@ -8,8 +8,13 @@ public class Circle implements GeometricObject, Resizable {
     }
 
     @Override
-    public double getArea() {
-        return Math.pow(radius, 2) * Math.PI;
+    public void resize(int percent) {
+        radius *= percent;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle [radius=" + radius + ", getArea()=" + getArea() + ", getPerimeter()=" + getPerimeter() + "]";
     }
 
     @Override
@@ -18,12 +23,7 @@ public class Circle implements GeometricObject, Resizable {
     }
 
     @Override
-    public void resize(int percent) {
-        radius *= percent;
-    }
-
-    @Override
-    public String toString() {
-        return "Circle [radius=" + radius + ", getArea()=" + getArea() + ", getPerimeter()=" + getPerimeter() + "]";
+    public double getArea() {
+        return Math.pow(radius, 2) * Math.PI;
     }
 }

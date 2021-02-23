@@ -74,6 +74,10 @@ public class MovingSprite extends JFrame implements KeyListener, ActionListener 
     }
 
     @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
@@ -90,10 +94,6 @@ public class MovingSprite extends JFrame implements KeyListener, ActionListener 
                 break;
         }
         repaint();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
     }
 
     @Override

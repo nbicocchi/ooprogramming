@@ -8,6 +8,10 @@ public class CelsiusConverterBareMinimum extends JFrame {
     private final JTextField fahrenheitTF;
     private final JTextField celsiusTF;
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(CelsiusConverterBareMinimum::new);
+    }
+
     public CelsiusConverterBareMinimum() {
         super("Celsius Converter");
         celsiusTF = new JTextField("000");
@@ -28,9 +32,5 @@ public class CelsiusConverterBareMinimum extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(350, 75);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(CelsiusConverterBareMinimum::new);
     }
 }
