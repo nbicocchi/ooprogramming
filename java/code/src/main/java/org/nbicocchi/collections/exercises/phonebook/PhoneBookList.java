@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * @author Nicola Bicocchi
  * @see PhoneBook
  */
-public class PhoneBookArray implements PhoneBook {
+public class PhoneBookList implements PhoneBook {
     ArrayList<Student> pb;
 
-    public PhoneBookArray() {
+    public PhoneBookList() {
         pb = new ArrayList<>();
     }
 

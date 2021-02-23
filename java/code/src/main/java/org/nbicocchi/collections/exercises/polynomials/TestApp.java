@@ -12,7 +12,7 @@ package org.nbicocchi.collections.exercises.polynomials;
  * <p>
  * ListPoly, stores a polynomial using List<Double> (c0..c_n).
  * <p>
- * Both the classes must work with the main method provided below.
+ * Both classes must work with the main method provided below.
  *
  * @author Nicola Bicocchi
  */
@@ -41,6 +41,5 @@ public class TestApp {
 
         lp = lp.derivative();
         System.out.println("lp'' = " + lp.toString());
-
     }
 }
