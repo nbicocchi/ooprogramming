@@ -213,4 +213,4 @@ If I need help, should I write an email to book an appointment?
 
 How does the exam is evaluated?
 > The final grade is a subjectively-weighted (Prof. Bicocchi is the subject) average between the home project and the oral examination. 
-> The oral examination is composed of theoretical questions about Java and Python and simple quizzes and exercises that anyone that developed a 2000 lines software project is quickly able to solve.
+> The oral examination is composed of theoretical questions about Java and Python and simple quizzes and exercises that anyone that developed a 2000 lines software project is quickly able to solve. The websites reported above, in particular https://www.w3resource.com/ and https://exercism.io/ provide plenty of examples.
