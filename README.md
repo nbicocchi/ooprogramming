@@ -44,7 +44,7 @@ More specifically, the course introduces the fundamentals of Object Oriented Pro
 * [YouTube PyCharm](https://www.youtube.com/c/PyCharmIDE/videos)
 
 ## Slack channel
-Slack is a simpler way to talk, share files, and work together. During the course, please use this tool instead of emails for asking questions and discuss exercises and home projects. Click [here](https://join.slack.com/t/dief-oop/shared_invite/zt-na1y647q-77XqQ1Atv60cH0XrkuMa8A) for joining Slack.
+Slack is a simpler way to talk, share files, and work together. During the course, please use this tool instead of emails for asking questions and discuss exercises and home projects. Click [here](https://join.slack.com/t/dief-oop/shared_invite/zt-na1y647q-77XqQ1Atv60cH0XrkuMa8A) for joining the course workspace on Slack.
 
 ## Slides, code examples
 Slides, and code examples can be found here and downloaded using git:
